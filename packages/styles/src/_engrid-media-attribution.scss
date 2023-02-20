@@ -10,113 +10,113 @@
   --media-attribution__margin: 1.25ch 1.5ch;
   --media-attribution__padding: 1.25ch 1.5ch;
   // --media-attribution__background-color: rgba(0, 0, 0, 0.3);
-}
 
-figure.media-with-attribution {
-  margin: 0 auto; // Mirrors settings added to all <img>'s
-  max-width: 100%; // Mirrors settings added to all <img>'s
-  width: 100%; // Mirrors settings added to all <img>'s
-  position: relative;
-  display: table; // The <figattribution> overlay only works when this is set to 'inline-block' or 'table' and 'table' was chosen because it will continue to respect the auto margin set above while setting it to an inline-block will cause it to ignore those auto margins. Recording: https://d.pr/v/QhPLOO
-
-  img {
+  figure.media-with-attribution {
+    margin: 0 auto; // Mirrors settings added to all <img>'s
+    max-width: 100%; // Mirrors settings added to all <img>'s
+    width: 100%; // Mirrors settings added to all <img>'s
     position: relative;
-    width: 100%;
-  }
+    display: table; // The <figattribution> overlay only works when this is set to 'inline-block' or 'table' and 'table' was chosen because it will continue to respect the auto margin set above while setting it to an inline-block will cause it to ignore those auto margins. Recording: https://d.pr/v/QhPLOO
 
-  figattribution {
-    font-family: var(--media-attribution__font-family);
-    position: absolute;
-    background-color: var(--media-attribution__background-color);
-    margin: var(--media-attribution__margin);
-    text-shadow: var(--media-attribution__text-shadow);
-    font-size: var(--media-attribution__font-size);
-    color: var(--media-attribution__color);
-    font-style: var(--media-attribution__font-style);
-    display: inline-block;
-    padding: var(--media-attribution__padding);
-    font-weight: var(--media-attribution__font-weight);
-    text-transform: var(--media-attribution__text-transform);
-  }
+    img {
+      position: relative;
+      width: 100%;
+    }
 
-  figattribution a,
-  figattribution a:hover,
-  figattribution a:focus {
-    font-size: var(--media-attribution__font-size);
-    color: var(--media-attribution__color);
-    font-family: var(--media-attribution__font-family);
-    color: var(--media-attribution__color);
-    font-style: var(--media-attribution__font-style);
-    font-weight: var(--media-attribution__font-weight);
-    text-decoration: none;
-  }
-
-  // Set the global default position
-  figattribution {
-    top: auto;
-    right: 0;
-    bottom: 0;
-    left: auto;
-    text-align: left;
-  }
-
-  // Utility classes to manually control the position per image
-  figattribution.attribution-topright {
-    top: 0;
-    right: 0;
-    bottom: auto;
-    left: auto;
-    text-align: right;
-  }
-
-  figattribution.attribution-bottomright {
-    top: auto;
-    right: 0;
-    bottom: 0;
-    left: auto;
-    text-align: right;
-  }
-
-  figattribution.attribution-bottomleft {
-    top: auto;
-    right: auto;
-    bottom: 0;
-    left: 0;
-    text-align: left;
-  }
-
-  figattribution.attribution-topleft {
-    top: 0;
-    right: auto;
-    bottom: auto;
-    left: 0;
-    text-align: left;
-  }
-}
-
-// Set the ENGrid layout default position for background images
-[data-engrid-layout="leftleft1col"],
-[data-engrid-layout="centerleftt1col"] {
-  .page-backgroundImage {
     figattribution {
+      font-family: var(--media-attribution__font-family);
+      position: absolute;
+      background-color: var(--media-attribution__background-color);
+      margin: var(--media-attribution__margin);
+      text-shadow: var(--media-attribution__text-shadow);
+      font-size: var(--media-attribution__font-size);
+      color: var(--media-attribution__color);
+      font-style: var(--media-attribution__font-style);
+      display: inline-block;
+      padding: var(--media-attribution__padding);
+      font-weight: var(--media-attribution__font-weight);
+      text-transform: var(--media-attribution__text-transform);
+    }
+
+    figattribution a,
+    figattribution a:hover,
+    figattribution a:focus {
+      font-size: var(--media-attribution__font-size);
+      color: var(--media-attribution__color);
+      font-family: var(--media-attribution__font-family);
+      color: var(--media-attribution__color);
+      font-style: var(--media-attribution__font-style);
+      font-weight: var(--media-attribution__font-weight);
+      text-decoration: none;
+    }
+
+    // Set the global default position
+    figattribution {
+      top: auto;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      text-align: left;
+    }
+
+    // Utility classes to manually control the position per image
+    figattribution.attribution-topright {
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+      text-align: right;
+    }
+
+    figattribution.attribution-bottomright {
       top: auto;
       right: 0;
       bottom: 0;
       left: auto;
       text-align: right;
     }
-  }
-}
 
-[data-engrid-layout="rightright1col"],
-[data-engrid-layout="centerrigt1col"] {
-  .page-backgroundImage {
-    figattribution {
+    figattribution.attribution-bottomleft {
       top: auto;
       right: auto;
       bottom: 0;
       left: 0;
       text-align: left;
+    }
+
+    figattribution.attribution-topleft {
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: 0;
+      text-align: left;
+    }
+  }
+
+  // Set the ENGrid layout default position for background images
+  &[data-engrid-layout="leftleft1col"],
+  &[data-engrid-layout="centerleftt1col"] {
+    .page-backgroundImage {
+      figattribution {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        text-align: right;
+      }
+    }
+  }
+
+  &[data-engrid-layout="rightright1col"],
+  &[data-engrid-layout="centerrigt1col"] {
+    .page-backgroundImage {
+      figattribution {
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        text-align: left;
+      }
     }
   }
 }

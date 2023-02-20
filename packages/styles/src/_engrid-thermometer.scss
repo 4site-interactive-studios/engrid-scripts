@@ -1,9 +1,11 @@
-// Remove fixed min-width on Thermometer bar
-.enWidget__bar .enWidget__progress {
-  min-width: initial;
-}
+[data-engrid-theme] {
+  // Remove fixed min-width on Thermometer bar
+  .enWidget__bar .enWidget__progress {
+    min-width: initial;
+  }
 
-// Let the embedded iFrame widget fill the width of the container it's placed within
-iframe[src*='enWidget.iframe.html'] {
-  width: 100%;
+  // Let the embedded iFrame widget fill the width of the container it's placed within
+  iframe[src*="enWidget.iframe.html"]  {
+    width: 100%;
+  }
 }

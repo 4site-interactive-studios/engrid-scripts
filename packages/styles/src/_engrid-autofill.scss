@@ -42,41 +42,43 @@
   }
 }
 
-input:-webkit-autofill {
-  /* Expose a hook for JavaScript when autofill is shown */
-  /* JavaScript can capture 'animationstart' events */
-  -webkit-animation-name: onAutoFillStart;
-  animation-name: onAutoFillStart;
+[data-engrid-theme] {
+  input:-webkit-autofill {
+    /* Expose a hook for JavaScript when autofill is shown */
+    /* JavaScript can capture 'animationstart' events */
+    -webkit-animation-name: onAutoFillStart;
+    animation-name: onAutoFillStart;
 
-  /* Make the background color transition really slowly */
-  -webkit-transition: background-color 50000s ease-in-out 0s;
-  transition: background-color 50000s ease-in-out 0s;
-}
+    /* Make the background color transition really slowly */
+    -webkit-transition: background-color 50000s ease-in-out 0s;
+    transition: background-color 50000s ease-in-out 0s;
+  }
 
-input:not(:-webkit-autofill) {
-  /* Expose a hook for JS onAutoFillCancel */
-  /* JavaScript can capture 'animationstart' events */
-  -webkit-animation-name: onAutoFillCancel;
-  animation-name: onAutoFillCancel;
-}
+  input:not(:-webkit-autofill) {
+    /* Expose a hook for JS onAutoFillCancel */
+    /* JavaScript can capture 'animationstart' events */
+    -webkit-animation-name: onAutoFillCancel;
+    animation-name: onAutoFillCancel;
+  }
 
-/* Prevent any CSS Transition from making the autofill text visually transition withing the input field */
-.is-autofilled,
-.is-autofilled label {
-  -webkit-transition: none !important;
-  transition: none !important;
-}
+  /* Prevent any CSS Transition from making the autofill text visually transition withing the input field */
+  .is-autofilled,
+  .is-autofilled label {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
 
-/* A fix for tiny font sizes on autofill: https://stackoverflow.com/a/60379185/815683 */
-/* @TODO Might be able to remove the above work arounds. Ensure to test that removal does not break the ability for JS to add "is-autofilled" */
-input:-webkit-autofill::first-line {
-  font-size: var(--input_font-size);
-}
+  /* A fix for tiny font sizes on autofill: https://stackoverflow.com/a/60379185/815683 */
+  /* @TODO Might be able to remove the above work arounds. Ensure to test that removal does not break the ability for JS to add "is-autofilled" */
+  input:-webkit-autofill::first-line {
+    font-size: var(--input_font-size);
+  }
 
-textarea:-webkit-autofill::first-line {
-  font-size: var(--textarea_font-size);
-}
+  textarea:-webkit-autofill::first-line {
+    font-size: var(--textarea_font-size);
+  }
 
-select:-webkit-autofill::first-line {
-  font-size: var(--select_font-size);
+  select:-webkit-autofill::first-line {
+    font-size: var(--select_font-size);
+  }
 }

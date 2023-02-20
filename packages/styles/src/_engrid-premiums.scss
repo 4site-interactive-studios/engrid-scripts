@@ -1,73 +1,76 @@
-.en__pg {
-  .en__pg__body {
-    display: grid;
-    grid-template-columns: min-content auto auto;
-    grid-template-rows: min-content;
-    grid-auto-columns: min-content;
-    grid-auto-rows: min-content;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    align-items: center;
-    grid-template-areas: "en__pg__select en__pg__detail en__pg__display";
+[data-engrid-theme] {
+  .en__pg {
+    .en__pg__body {
+      display: grid;
+      grid-template-columns: min-content auto auto;
+      grid-template-rows: min-content;
+      grid-auto-columns: min-content;
+      grid-auto-rows: min-content;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      align-items: center;
+      grid-template-areas: "en__pg__select en__pg__detail en__pg__display";
+    }
+
+    &:first-child .en__pg__body {
+      padding: calc(var(--fields_spacing-block) * 2)
+        calc(var(--fields_spacing-inline) * 2) var(--fields_spacing-block);
+    }
+
+    &:not(:first-child):not(:last-child) .en__pg__body {
+    }
+
+    &:last-child .en__pg__body {
+      padding: var(--fields_spacing-block)
+        calc(var(--fields_spacing-inline) * 2)
+        calc(var(--fields_spacing-block) * 2);
+    }
   }
 
-  &:first-child .en__pg__body {
-    padding: calc(var(--fields_spacing-block) * 2)
-      calc(var(--fields_spacing-inline) * 2) var(--fields_spacing-block);
+  .en__pg__select {
+    align-self: center;
+    grid-area: en__pg__select;
+    padding: 0 calc(var(--fields_spacing-inline) * 2) 0 0;
   }
 
-  &:not(:first-child):not(:last-child) .en__pg__body {
+  .en__pg__display {
+    grid-area: en__pg__display;
+    padding: 0 0 0 calc(var(--fields_spacing-inline) * 2);
   }
 
-  &:last-child .en__pg__body {
-    padding: var(--fields_spacing-block) calc(var(--fields_spacing-inline) * 2)
-      calc(var(--fields_spacing-block) * 2);
+  .en__pg__detail {
+    grid-area: en__pg__detail;
+    padding: 0;
   }
-}
 
-.en__pg__select {
-  align-self: center;
-  grid-area: en__pg__select;
-  padding: 0 calc(var(--fields_spacing-inline) * 2) 0 0;
-}
+  .en__pg__name {
+    margin-top: 0;
+  }
 
-.en__pg__display {
-  grid-area: en__pg__display;
-  padding: 0 0 0 calc(var(--fields_spacing-inline) * 2);
-}
+  h2.en__pg__name {
+    text-align: left;
+  }
 
-.en__pg__detail {
-  grid-area: en__pg__detail;
-  padding: 0;
-}
+  .en__pg__optionType {
+    display: flex;
+    flex-direction: column;
+  }
 
-.en__pg__name {
-  margin-top: 0;
-}
+  .en__pg__optionType select {
+    width: auto;
+  }
 
-h2.en__pg__name {
-  text-align: left;
-}
+  .en__pg__image {
+    max-width: 125px;
+    min-width: 100%;
+  }
 
-.en__pg__optionType {
-  display: flex;
-  flex-direction: column;
-}
+  .en__pg--selected .en__pg__image--selected {
+    outline-color: transparent;
+  }
 
-.en__pg__optionType select {
-  width: auto;
-}
-
-.en__pg__image {
-  max-width: 125px;
-  min-width: 100%;
-}
-
-.en__pg--selected .en__pg__image--selected {
-  outline-color: transparent;
-}
-
-.en__pgList[data-nogift] .en__pg:last-of-type .en__pg__display {
-  flex-basis: 0;
-  padding: 0;
+  .en__pgList[data-nogift] .en__pg:last-of-type .en__pg__display {
+    flex-basis: 0;
+    padding: 0;
+  }
 }

@@ -1,4 +1,4 @@
-body {
+body[data-engrid-theme] {
   background-color: var(--engrid__page_background-color);
   min-width: 100vw;
   min-height: 100vh;

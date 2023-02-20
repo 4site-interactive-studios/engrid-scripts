@@ -62,7 +62,7 @@ $centerright1col_body-column_offset-width-remaining: $centerright1col_content-co
 
   @media screen and (max-width: $centerright1col_content-column_min-width_minus-1px) {
     @include engrid_replace-banner-with-background("centerright1col");
-    @include engrid_mobile-banner;
+    @include engrid_mobile-banner("centerright1col");
     @include engrid_embedded-mobile-body;
     @include remove-body-drop-shadow("centerright1col");
   }

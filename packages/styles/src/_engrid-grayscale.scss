@@ -1,9 +1,11 @@
-// Grayscale Utility Classes
-.grayscale,
-.grayscale-image img,
-.grayscale-image picture,
-.grayscale-video video,
-img.grayscale-image picture.grayscale-image,
-video.grayscale-video {
-  filter: grayscale(100%);
+[data-engrid-theme] {
+  // Grayscale Utility Classes
+  .grayscale,
+  .grayscale-image img,
+  .grayscale-image picture,
+  .grayscale-video video,
+  img.grayscale-image picture.grayscale-image,
+  video.grayscale-video {
+    filter: grayscale(100%);
+  }
 }

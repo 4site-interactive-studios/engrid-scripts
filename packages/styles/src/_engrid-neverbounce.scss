@@ -1,7 +1,8 @@
-/* Utilizes the standard NeverBounce Implimentation but styles it to match the client brand */
-/* Note, we add "async" to the javascript file call */
-/* Note, NeverBounce's CDN uses HTTP 1. You can self host the file to get around this */
-/* @TODO Check support for "fancyerrors" and float labels, as well as input fields with rounded borders
+[data-engrid-theme] {
+  /* Utilizes the standard NeverBounce Implimentation but styles it to match the client brand */
+  /* Note, we add "async" to the javascript file call */
+  /* Note, NeverBounce's CDN uses HTTP 1. You can self host the file to get around this */
+  /* @TODO Check support for "fancyerrors" and float labels, as well as input fields with rounded borders
 /*
     <script type="text/javascript">
         _NBSettings = {
@@ -11,75 +12,76 @@
     <script async type="text/javascript" src="https://cdn.neverbounce.com/widget/dist/NeverBounce.js"></script>
 */
 
-div[id^="nb-field-"] {
-  max-width: 100% !important;
-  width: 100% !important;
-
-  div.nb-feedback {
-    display: block !important;
-    margin-top: 0px !important;
+  div[id^="nb-field-"] {
     max-width: 100% !important;
     width: 100% !important;
-    position: absolute !important;
-    left: -99999px !important;
-    padding: 0.25rem 0.5rem !important;
-    font-size: 1.125em !important;
-    font-size: 0.75rem !important;
-    font-family: HarmoniaSansStd !important; //@TODO Update to match the default/theme font
-    font-weight: 400 !important;
-    font-stretch: normal !important;
-    font-style: normal !important;
-    line-height: 1.44 !important;
-    letter-spacing: normal !important;
-    transition-timing-function: cubic-bezier(0, 1, 0, 1) !important;
 
-    .nb-poweredby {
-      display: none !important;
-    }
-  }
-}
+    div.nb-feedback {
+      display: block !important;
+      margin-top: 0px !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      position: absolute !important;
+      left: -99999px !important;
+      padding: 0.25rem 0.5rem !important;
+      font-size: 1.125em !important;
+      font-size: 0.75rem !important;
+      font-family: HarmoniaSansStd !important; //@TODO Update to match the default/theme font
+      font-weight: 400 !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.44 !important;
+      letter-spacing: normal !important;
+      transition-timing-function: cubic-bezier(0, 1, 0, 1) !important;
 
-div[id^="nb-field-"].nb-error {
-  input {
-    border-color: var(--error__color) !important;
-    background-color: var(--error__color_faded) !important;
-
-    .nb-feedback {
-      position: initial !important;
-      border: none !important;
-      background-color: var(--error__color) !important;
-      color: #ffffff !important;
-
-      .nb-icon-cancel {
+      .nb-poweredby {
         display: none !important;
       }
     }
   }
-}
 
-div[id^="nb-field-"].nb-success input {
-  border-color: initial !important;
-}
+  div[id^="nb-field-"].nb-error {
+    input {
+      border-color: var(--error__color) !important;
+      background-color: var(--error__color_faded) !important;
 
-// Replicate field spacing pattern for when the nb-wrapper sits between the ".en__field__element" and the email "input"
-// REF: _engrid-fields.scss https://github.com/4site-interactive-studios/engrid-scripts/blob/34dee282babbd576f58cb1aa8b3f911c87897371/packages/styles/src/_engrid-fields.scss#L264
-#nb-wrapper > input[type="email"] {
-  margin-top: calc(var(--fields_spacing-inline) * 0.5);
-  margin-bottom: var(--fields_spacing-block);
-}
+      .nb-feedback {
+        position: initial !important;
+        border: none !important;
+        background-color: var(--error__color) !important;
+        color: #ffffff !important;
 
-// NeverBounce wraps the email field in its own div which causes field styles to no longer be applied. This restores that styling.
-.en__component--formblock .en__field .en__field__element > [id^="nb"] > input,
-.en__component--svblock .en__field .en__field__element > [id^="nb"] > input {
-  margin-top: calc(var(--fields_spacing-inline) * 0.5);
-  margin-bottom: var(--fields_spacing-block);
-}
+        .nb-icon-cancel {
+          display: none !important;
+        }
+      }
+    }
+  }
 
-// Styles for our custom NeverBounce implimentation.
-#nb-wrapper{
-  width: 100%;
+  div[id^="nb-field-"].nb-success input {
+    border-color: initial !important;
+  }
 
-  div.nb-hidden {
-    display: none !important;
+  // Replicate field spacing pattern for when the nb-wrapper sits between the ".en__field__element" and the email "input"
+  // REF: _engrid-fields.scss https://github.com/4site-interactive-studios/engrid-scripts/blob/34dee282babbd576f58cb1aa8b3f911c87897371/packages/styles/src/_engrid-fields.scss#L264
+  #nb-wrapper > input[type="email"] {
+    margin-top: calc(var(--fields_spacing-inline) * 0.5);
+    margin-bottom: var(--fields_spacing-block);
+  }
+
+  // NeverBounce wraps the email field in its own div which causes field styles to no longer be applied. This restores that styling.
+  .en__component--formblock .en__field .en__field__element > [id^="nb"] > input,
+  .en__component--svblock .en__field .en__field__element > [id^="nb"] > input {
+    margin-top: calc(var(--fields_spacing-inline) * 0.5);
+    margin-bottom: var(--fields_spacing-block);
+  }
+
+  // Styles for our custom NeverBounce implimentation.
+  #nb-wrapper {
+    width: 100%;
+
+    div.nb-hidden {
+      display: none !important;
+    }
   }
 }

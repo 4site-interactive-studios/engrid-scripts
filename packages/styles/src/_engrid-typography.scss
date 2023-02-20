@@ -74,81 +74,79 @@
   // TYPOGRAPHY A:HOVER
   // --a_color_hover: var(--a_color);
   --a_text-decoration_hover: initial;
-}
 
-// The most common typographic elements for pages
-// @TODO Implement a more advanced SASS based method for fluidly scaling type size
-// @BODY https://css-tricks.com/snippets/css/fluid-typography/
+  // The most common typographic elements for pages
+  // @TODO Implement a more advanced SASS based method for fluidly scaling type size
+  // @BODY https://css-tricks.com/snippets/css/fluid-typography/
 
-body {
   font-family: var(--default_font-family);
   color: var(--default_color);
   font-size: var(--default_font-size);
   font-weight: var(--default_font-weight);
   line-height: var(--default_line-height);
-}
 
-h1 {
-  font-family: var(--h1_font-family);
-  color: var(--h1_color);
-  font-size: var(--h1_font-size);
-  font-weight: var(--h1_font-weight);
-  line-height: var(--h1_line-height);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  text-transform: var(--h1_text-transform);
-}
+  h1 {
+    font-family: var(--h1_font-family);
+    color: var(--h1_color);
+    font-size: var(--h1_font-size);
+    font-weight: var(--h1_font-weight);
+    line-height: var(--h1_line-height);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: var(--h1_text-transform);
+  }
 
-h2 {
-  font-family: var(--h2_font-family);
-  color: var(--h2_color);
-  font-size: var(--h2_font-size);
-  font-weight: var(--h2_font-weight);
-  line-height: var(--h2_line-height);
-  margin-top: calc(2rem * var(--scale-down_20pct));
-  margin-bottom: calc(1rem * var(--scale-down_20pct));
-  text-transform: var(--h2_text-transform);
-}
+  h2 {
+    font-family: var(--h2_font-family);
+    color: var(--h2_color);
+    font-size: var(--h2_font-size);
+    font-weight: var(--h2_font-weight);
+    line-height: var(--h2_line-height);
+    margin-top: calc(2rem * var(--scale-down_20pct));
+    margin-bottom: calc(1rem * var(--scale-down_20pct));
+    text-transform: var(--h2_text-transform);
+  }
 
-h3 {
-  font-family: var(--h3_font-family);
-  color: var(--h3_color);
-  font-size: var(--h3_font-size);
-  font-weight: var(--h3_font-weight);
-  line-height: var(--h3_line-height);
-  margin-top: calc(2rem * var(--scale-down_40pct));
-  margin-bottom: calc(1rem * var(--scale-down_40pct));
-  text-transform: var(--h3_text-transform);
-}
+  h3 {
+    font-family: var(--h3_font-family);
+    color: var(--h3_color);
+    font-size: var(--h3_font-size);
+    font-weight: var(--h3_font-weight);
+    line-height: var(--h3_line-height);
+    margin-top: calc(2rem * var(--scale-down_40pct));
+    margin-bottom: calc(1rem * var(--scale-down_40pct));
+    text-transform: var(--h3_text-transform);
+  }
 
-h4,
-h5,
-h6 {
-  font-family: var(--h3_font-family);
-  color: var(--h3_color);
-  font-size: calc(var(--h3_font-size) * var(--scale-down_20pct));
-  font-weight: var(--h3_font-weight);
-  line-height: var(--h3_line-height);
-  margin-top: calc(2rem * var(--scale-down_80pct));
-  margin-bottom: calc(1rem * var(--scale-down_80pct));
-  text-transform: var(--h4_text-transform);
-}
+  h4,
+  h5,
+  h6 {
+    font-family: var(--h3_font-family);
+    color: var(--h3_color);
+    font-size: calc(var(--h3_font-size) * var(--scale-down_20pct));
+    font-weight: var(--h3_font-weight);
+    line-height: var(--h3_line-height);
+    margin-top: calc(2rem * var(--scale-down_80pct));
+    margin-bottom: calc(1rem * var(--scale-down_80pct));
+    text-transform: var(--h4_text-transform);
+  }
 
-p {
-  font-family: var(--p_font-family);
-  font-size: var(--p_font-size);
-  font-weight: var(--p_font-weight);
-  line-height: var(--p_line-height);
-}
+  p {
+    font-family: var(--p_font-family);
+    font-size: var(--p_font-size);
+    font-weight: var(--p_font-weight);
+    line-height: var(--p_line-height);
+  }
 
-a {
-  font-family: var(--a_font-family);
-  color: var(--a_color);
-  text-decoration: var(--a_text-decoration);
+  a {
+    font-family: var(--a_font-family);
+    color: var(--a_color);
+    text-decoration: var(--a_text-decoration);
 
-  &:focus,
-  &:hover {
-    color: var(--a_color_hover);
-    text-decoration: var(--a_text-decoration_hover);
+    &:focus,
+    &:hover {
+      color: var(--a_color_hover);
+      text-decoration: var(--a_text-decoration_hover);
+    }
   }
 }

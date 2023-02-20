@@ -52,7 +52,7 @@ $rightright1col_body-column_max-width: $one_col_body-column_max-width !default; 
 
   @media screen and (max-width: $rightright1col_content-column_min-width_minus-1px) {
     @include engrid_replace-banner-with-background("rightright1col");
-    @include engrid_mobile-banner;
+    @include engrid_mobile-banner("rightright1col");
     @include engrid_embedded-mobile-body;
     @include remove-body-drop-shadow("rightright1col");
   }

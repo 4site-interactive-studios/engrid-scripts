@@ -1,70 +1,72 @@
-.indicator__wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  font-weight: bold;
-  font-stretch: condensed;
-  font-style: normal;
-  line-height: 1.19;
-  letter-spacing: normal;
-  height: 54px;
-  width: 100%;
-  margin: 0 0 20px 0;
-  font-family: "AmnestyTradeGothicBdCn", sans-serif;
-  background-color: rgba(228, 228, 228, 0.36);
-}
-
-.indicator__percentage {
-  display: flex;
-  z-index: 10;
-  color: #000000;
-}
-
-.indicator__percentage-sign {
-  margin: 4px 0 0 2px;
-  font-family: sans-serif;
-  z-index: 4;
-  font-size: 0.52em;
-  font-weight: 500;
-}
-
-.indicator__progress {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  height: 54px;
-  transform-origin: left center;
-  transition: transform 1s ease;
-  background: #ffff00;
-}
-
-header {
-  span[data-engrid-progress-indicator] {
-    flex: 1;
-    display: block;
-    margin-right: 20px;
-  }
+[data-engrid-theme] {
   .indicator__wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: condensed;
+    font-style: normal;
+    line-height: 1.19;
+    letter-spacing: normal;
+    height: 54px;
     width: 100%;
-    max-width: 180px;
-    margin: 0 0 0 auto;
+    margin: 0 0 20px 0;
+    font-family: "AmnestyTradeGothicBdCn", sans-serif;
     background-color: rgba(228, 228, 228, 0.36);
-    @media screen and (max-width: 439px) {
-      background-color: rgba(37, 37, 37, 0.3);
-    }
   }
-  .indicator__progress {
-    background: #ffff00;
-    @media screen and (max-width: 439px) {
-      background: rgba(37, 37, 37, 1);
-    }
-  }
+
   .indicator__percentage {
+    display: flex;
+    z-index: 10;
     color: #000000;
-    @media screen and (max-width: 439px) {
-      color: #ffffff;
+  }
+
+  .indicator__percentage-sign {
+    margin: 4px 0 0 2px;
+    font-family: sans-serif;
+    z-index: 4;
+    font-size: 0.52em;
+    font-weight: 500;
+  }
+
+  .indicator__progress {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 54px;
+    transform-origin: left center;
+    transition: transform 1s ease;
+    background: #ffff00;
+  }
+
+  header {
+    span[data-engrid-progress-indicator] {
+      flex: 1;
+      display: block;
+      margin-right: 20px;
+    }
+    .indicator__wrap {
+      width: 100%;
+      max-width: 180px;
+      margin: 0 0 0 auto;
+      background-color: rgba(228, 228, 228, 0.36);
+      @media screen and (max-width: 439px) {
+        background-color: rgba(37, 37, 37, 0.3);
+      }
+    }
+    .indicator__progress {
+      background: #ffff00;
+      @media screen and (max-width: 439px) {
+        background: rgba(37, 37, 37, 1);
+      }
+    }
+    .indicator__percentage {
+      color: #000000;
+      @media screen and (max-width: 439px) {
+        color: #ffffff;
+      }
     }
   }
 }

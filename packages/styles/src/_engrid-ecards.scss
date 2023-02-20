@@ -1,136 +1,141 @@
 [data-engrid-theme] {
-    --ecard_thumnail-row_count: 3;
-    --ecard_thumnail-row_height: auto;
-}
+  --ecard_thumnail-row_count: 3;
+  --ecard_thumnail-row_height: auto;
 
-// @TODO Update with ENGRID CSS Properties
-.en__ecarditems__thumb {
-  height: auto !important;
-}
-
-button.en__ecarditems__addrecipient {
-  margin: 4px !important;
-}
-
-.en__ecardrecipients__name,
-.ecardrecipient__name {
-  width: calc(50% - 1rem) !important;
-}
-
-.en__ecardrecipients__email,
-.ecardrecipient__email {
-  width: calc(50% - 1rem) !important;
-}
-
-.ecardrecipient__name,
-.ecardrecipient__email {
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #0a0a0a;
-  opacity: 0.8;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.en__ecardrecipients__list:before {
-  color: #323232;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #323232;
-}
-
-.en__ecardrecipients__recipient {
-  padding: 0;
-}
-
-.en__ecardrecipients__list {
-  min-height: 50px;
-  border: 0px;
-  padding: 0px;
-}
-
-.ecardrecipient__remove button {
-  width: 30px;
-  height: 30px;
-  background-color: var(--error__color);
-  padding: 0 !important;
-  font-size: 0.75rem !important;
-  position: relative;
-  right: 2px;
-}
-
-.en__ecarditems__list{
-  margin-left: calc(var(--fields_spacing-inline) * -1);
-  margin-right: calc(var(--fields_spacing-inline) * -1);
-}
-
-.en__ecarditems__thumb{
-  width: calc((100% - var(--fields_spacing-inline) * (var(--ecard_thumnail-row_count) * 2)) / var(--ecard_thumnail-row_count));
-  margin-left: var(--fields_spacing-inline);
-  margin-right: var(--fields_spacing-inline);
-}
-
-.en__ecarditems__thumb img {
-  height: var(--ecard_thumnail-row_height);
-  width: auto;
-  border: 2px solid var(--color_primary);
-  -webkit-filter: brightness(75%);
-  filter: brightness(75%);
-}
-
-.en__ecarditems__thumb:hover img {
-  -webkit-filter: brightness(87.5%);
-  filter: brightness(87.5%);
-  opacity: 0.75;
-}
-
-.en__ecarditems__thumb.thumb--active img {
-  -webkit-filter: brightness(100%);
-  filter: brightness(100%);
-}
-
-.en__ecardmessage__default {
-  margin-bottom: 40px;
-  height: 18rem;
-}
-
-button.en__ecarditems__prevclose {
-  background-color: white;
-  top: 0;
-  right: 0;
-  font-size: 2rem;
-  padding: 0.35ch;
-  margin: 0;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
-}
-
-.en__ecarditems__showprev {
-  background-color: #323232;
-  margin-bottom: 40px;
-  color: #ffffff;
-  :hover {
-    color: #ffffff;
+  // @TODO Update with ENGRID CSS Properties
+  .en__ecarditems__thumb {
+    height: auto !important;
   }
-}
 
-@media screen and (max-width: 700px) {
+  button.en__ecarditems__addrecipient {
+    margin: 4px !important;
+  }
+
+  .en__ecardrecipients__name,
+  .ecardrecipient__name {
+    width: calc(50% - 1rem) !important;
+  }
+
+  .en__ecardrecipients__email,
+  .ecardrecipient__email {
+    width: calc(50% - 1rem) !important;
+  }
+
+  .ecardrecipient__name,
+  .ecardrecipient__email {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #0a0a0a;
+    opacity: 0.8;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .en__ecardrecipients__list:before {
+    color: #323232;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #323232;
+  }
+
+  .en__ecardrecipients__recipient {
+    padding: 0;
+  }
+
+  .en__ecardrecipients__list {
+    min-height: 50px;
+    border: 0px;
+    padding: 0px;
+  }
+
+  .ecardrecipient__remove button {
+    width: 30px;
+    height: 30px;
+    background-color: var(--error__color);
+    padding: 0 !important;
+    font-size: 0.75rem !important;
+    position: relative;
+    right: 2px;
+  }
+
+  .en__ecarditems__list {
+    margin-left: calc(var(--fields_spacing-inline) * -1);
+    margin-right: calc(var(--fields_spacing-inline) * -1);
+  }
+
+  .en__ecarditems__thumb {
+    width: calc(
+      (
+          100% - var(--fields_spacing-inline) *
+            (var(--ecard_thumnail-row_count) * 2)
+        ) / var(--ecard_thumnail-row_count)
+    );
+    margin-left: var(--fields_spacing-inline);
+    margin-right: var(--fields_spacing-inline);
+  }
+
+  .en__ecarditems__thumb img {
+    height: var(--ecard_thumnail-row_height);
+    width: auto;
+    border: 2px solid var(--color_primary);
+    -webkit-filter: brightness(75%);
+    filter: brightness(75%);
+  }
+
+  .en__ecarditems__thumb:hover img {
+    -webkit-filter: brightness(87.5%);
+    filter: brightness(87.5%);
+    opacity: 0.75;
+  }
+
+  .en__ecarditems__thumb.thumb--active img {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+  }
+
+  .en__ecardmessage__default {
+    margin-bottom: 40px;
+    height: 18rem;
+  }
+
   button.en__ecarditems__prevclose {
-    right: 17px;
-    color: #9e9e9e;
+    background-color: white;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    padding: 0.35ch;
+    margin: 0;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
   }
-}
 
-// Hides any section with the "send-if-ecard" class until the [data-engrid-show-ecard-options] data attribute is added
-body:not[data-engrid-show-ecard-options] .show-if-ecard {
-  display: none;
+  .en__ecarditems__showprev {
+    background-color: #323232;
+    margin-bottom: 40px;
+    color: #ffffff;
+    :hover {
+      color: #ffffff;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    button.en__ecarditems__prevclose {
+      right: 17px;
+      color: #9e9e9e;
+    }
+  }
+
+  // Hides any section with the "send-if-ecard" class until the [data-engrid-show-ecard-options] data attribute is added
+  &:not[data-engrid-show-ecard-options] .show-if-ecard {
+    display: none;
+  }
 }

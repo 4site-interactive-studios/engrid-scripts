@@ -1,58 +1,60 @@
-body:not(#en__pagebuilder):not([data-engrid-debug]) {
-  [class*="showifamount"] {
-    // If the conditional content is not open, and not animated, hide it
-    &:not(.engrid-open):not([class*="animate-"]) {
-      display: none;
-    }
-
-    // Animattion: Replace Effect
-    &.animate-replace {
-      // Hide the content for a fraction of a second with zero opacity so that while it scales from 0 to 1 (100% height) it does not appear as a single dark line in that first fraction of a second
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 1, 1),
-        transform 0.3s cubic-bezier(1, 0, 0, 1);
-
-      // Visually transition multimedia and iframes after the scaling transition has completed to avoid showing squashed faces or similar unwanted visual skewing.
-      img,
-      picture,
-      video,
-      audio,
-      iframe {
-        transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1) 0.2s;
+[data-engrid-theme] {
+  &:not(#en__pagebuilder):not([data-engrid-debug]) {
+    [class*="showifamount"] {
+      // If the conditional content is not open, and not animated, hide it
+      &:not(.engrid-open):not([class*="animate-"]) {
+        display: none;
       }
 
-      &:not(.engrid-open) {
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transform: scaleY(0);
+      // Animattion: Replace Effect
+      &.animate-replace {
+        // Hide the content for a fraction of a second with zero opacity so that while it scales from 0 to 1 (100% height) it does not appear as a single dark line in that first fraction of a second
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 1, 1),
+          transform 0.3s cubic-bezier(1, 0, 0, 1);
 
+        // Visually transition multimedia and iframes after the scaling transition has completed to avoid showing squashed faces or similar unwanted visual skewing.
         img,
         picture,
         video,
         audio,
         iframe {
+          transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1) 0.2s;
+        }
+
+        &:not(.engrid-open) {
           opacity: 0;
+          max-height: 0;
+          overflow: hidden;
+          transform: scaleY(0);
+
+          img,
+          picture,
+          video,
+          audio,
+          iframe {
+            opacity: 0;
+          }
+        }
+
+        &.engrid-open {
+          max-height: 100%;
+          transform: scaleY(1);
+          transform-origin: top;
         }
       }
 
-      &.engrid-open {
-        max-height: 100%;
-        transform: scaleY(1);
-        transform-origin: top;
-      }
-    }
+      // Animattion: Vertical Slide Effect
+      &.animate-vertical-slide {
+        transition: max-height 0.3s ease-in-out;
 
-    // Animattion: Vertical Slide Effect
-    &.animate-vertical-slide {
-      transition: max-height 0.3s ease-in-out;
+        &:not(.engrid-open) {
+          max-height: 0;
+          overflow: hidden;
+        }
 
-      &:not(.engrid-open) {
-        max-height: 0;
-        overflow: hidden;
-      }
-
-      &.engrid-open {
-        max-height: 100%;
+        &.engrid-open {
+          max-height: 100%;
+        }
       }
     }
   }

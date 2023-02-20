@@ -1,105 +1,107 @@
-.tc-has-country-flags {
-  position: relative;
-  input {
-    padding-left: 52px !important;
-  }
-}
-.tc-hide {
-  display: none;
-}
-.tc-flags-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0;
-  cursor: pointer;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin-top: var(--tc-phone-margin-top);
-  margin-bottom: var(--tc-phone-margin-bottom);
-  * {
-    box-sizing: border-box;
-  }
-  &:hover {
-    .tc-selected-flag {
-      background-color: rgba(0, 0, 0, 0.05);
+[data-engrid-theme] {
+  .tc-has-country-flags {
+    position: relative;
+    input {
+      padding-left: 52px !important;
     }
   }
-}
-.tc-selected-flag {
-  z-index: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 6px 0 8px;
-  .tc-flag {
-    width: 25px;
-    line-height: 0;
-    img,
-    picture {
-      display: block;
-      max-width: 100%;
-      object-fit: contain;
+  .tc-hide {
+    display: none;
+  }
+  .tc-flags-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: var(--tc-phone-margin-top);
+    margin-bottom: var(--tc-phone-margin-bottom);
+    * {
+      box-sizing: border-box;
     }
-    &-arrow {
-      margin-left: 5px;
-      width: 0;
-      height: 0;
-      border-left: 3px solid transparent;
-      border-right: 3px solid transparent;
-      border-top: 4px solid #555;
+    &:hover {
+      .tc-selected-flag {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
     }
   }
-  &.tc-open {
-    .tc-flag-arrow {
-      transform: rotate(180deg);
-    }
-  }
-}
-.tc-country-list {
-  position: absolute;
-  z-index: 2;
-  list-style: none;
-  text-align: left;
-  padding: 0;
-  margin: 0 0 0 -1px;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  background-color: white;
-  border: 1px solid #ccc;
-  white-space: nowrap;
-  max-height: 205px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  .tc-country {
-    padding: 5px 10px;
-    outline: none;
+  .tc-selected-flag {
+    z-index: 1;
+    position: relative;
     display: flex;
-    align-items: stretch;
-    &:hover,
-    &.tc-highlight {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-    .tc-flag-box {
-      width: 20px;
-      margin-right: 6px;
-      display: flex;
-      align-items: center;
-      img {
+    align-items: center;
+    height: 100%;
+    padding: 0 6px 0 8px;
+    .tc-flag {
+      width: 25px;
+      line-height: 0;
+      img,
+      picture {
+        display: block;
         max-width: 100%;
         object-fit: contain;
       }
+      &-arrow {
+        margin-left: 5px;
+        width: 0;
+        height: 0;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 4px solid #555;
+      }
     }
-    .tc-country-name {
-      margin-right: 6px;
-    }
-    .tc-dial-code {
-      color: #999;
+    &.tc-open {
+      .tc-flag-arrow {
+        transform: rotate(180deg);
+      }
     }
   }
-  .tc-divider {
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ccc;
+  .tc-country-list {
+    position: absolute;
+    z-index: 2;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 0 -1px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    max-height: 205px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    .tc-country {
+      padding: 5px 10px;
+      outline: none;
+      display: flex;
+      align-items: stretch;
+      &:hover,
+      &.tc-highlight {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      .tc-flag-box {
+        width: 20px;
+        margin-right: 6px;
+        display: flex;
+        align-items: center;
+        img {
+          max-width: 100%;
+          object-fit: contain;
+        }
+      }
+      .tc-country-name {
+        margin-right: 6px;
+      }
+      .tc-dial-code {
+        color: #999;
+      }
+    }
+    .tc-divider {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+    }
   }
 }

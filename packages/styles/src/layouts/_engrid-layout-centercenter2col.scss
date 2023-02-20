@@ -156,7 +156,7 @@ $centercenter2col_body-column_offset-width-remaining: $centercenter2col_content-
 
   @media screen and (max-width: $centercenter2col_content-column_min-width_minus-1px) {
     @include engrid_replace-banner-with-background("centercenter2col");
-    @include engrid_mobile-banner;
+    @include engrid_mobile-banner("centercenter2col");
     @include engrid_embedded-mobile-body;
     // @include remove-body-drop-shadow("centercenter2col"); // No box shadow on two column layouts
   }

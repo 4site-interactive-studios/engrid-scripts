@@ -1,53 +1,57 @@
-#en__pagebuilder div.en__component.engrid-ticker {
-  display: block !important;
-  max-height: 200px;
-  overflow: hidden;
-}
-div.en__component.engrid-ticker {
-  display: none;
-}
-div.en__component--ticker {
-  overflow: hidden;
-}
-#engrid-ticker {
-  width: 100%;
-  overflow: hidden;
-  height: 5rem;
-  margin-bottom: 1rem;
-  --speed-modifier: 1;
-  .ticker {
-    --calculated-speed: calc((1s * (var(--ticker-size) / 50)) * var(--speed-modifier));
-    display: inline-block;
+[data-engrid-theme] {
+  &#en__pagebuilder div.en__component.engrid-ticker {
+    display: block !important;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  div.en__component.engrid-ticker {
+    display: none;
+  }
+  div.en__component--ticker {
+    overflow: hidden;
+  }
+  #engrid-ticker {
+    width: 100%;
+    overflow: hidden;
     height: 5rem;
-    line-height: 5rem;
-    white-space: nowrap;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-name: tickerScroll;
-    animation-duration: var(--calculated-speed);
-    &:hover {
-      animation-play-state: paused;
+    margin-bottom: 1rem;
+    --speed-modifier: 1;
+    .ticker {
+      --calculated-speed: calc(
+        (1s * (var(--ticker-size) / 50)) * var(--speed-modifier)
+      );
+      display: inline-block;
+      height: 5rem;
+      line-height: 5rem;
+      white-space: nowrap;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-name: tickerScroll;
+      animation-duration: var(--calculated-speed);
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+    .ticker__item {
+      display: inline-block;
+      padding: 0 1rem;
+      font-size: 1.125rem;
+      line-height: 1.4;
+      font-weight: 700;
+      &:hover {
+        animation-play-state: paused;
+      }
     }
   }
-  .ticker__item {
-    display: inline-block;
-    padding: 0 1rem;
-    font-size: 1.125rem;
-    line-height: 1.4;
-    font-weight: 700;
-    &:hover {
-      animation-play-state: paused;
+  @keyframes tickerScroll {
+    0% {
+      transform: translateX(0);
     }
-  }
-}
-@keyframes tickerScroll {
-  0% {
-    transform: translateX(0);
-  }
-  99% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
+    99% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }

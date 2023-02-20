@@ -2,27 +2,27 @@
   // HIGHLIGHTS
   // --highlight__background-color: #227F9E;
   // --highlight__color: #FFFFFF;
-}
 
-.highlight {
-  background-color: var(--highlight__background-color);
-  color: var(--highlight__color);
-  padding: 0.15em;
-  display: inline-block;
-}
+  .highlight {
+    background-color: var(--highlight__background-color);
+    color: var(--highlight__color);
+    padding: 0.15em;
+    display: inline-block;
+  }
 
-.highlight:before {
-  margin-bottom: -0.41rem;
-  content: "";
-  display: block;
-  height: 0;
-  width: 0;
-}
+  .highlight:before {
+    margin-bottom: -0.41rem;
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+  }
 
-.highlight::after {
-  margin-top: -0.37em;
-  content: "";
-  display: block;
-  height: 0;
-  width: 0;
+  .highlight::after {
+    margin-top: -0.37em;
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+  }
 }

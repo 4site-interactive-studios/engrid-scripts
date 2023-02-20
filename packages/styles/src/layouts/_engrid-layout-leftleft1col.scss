@@ -51,7 +51,7 @@ $leftleft1col_body-column_max-width: $one_col_body-column_max-width !default; //
 
   @media screen and (max-width: $leftleft1col_content-column_min-width_minus-1px) {
     @include engrid_replace-banner-with-background("leftleft1col");
-    @include engrid_mobile-banner;
+    @include engrid_mobile-banner("leftleft1col");
     @include engrid_embedded-mobile-body;
     @include remove-body-drop-shadow("leftleft1col");
   }

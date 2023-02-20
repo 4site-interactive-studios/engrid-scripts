@@ -4,179 +4,179 @@
   // --error__color_faded: #fff8f4;
   // --error__background-color: #fff8f4;
   --error__border-width: var(--input_border-width);
-}
 
-/************************************
+  /************************************
 * Error Messages
 ***********************************/
 
-/* Page Level Errors */
-.en__errorHeader {
-  padding: 0.5rem 2rem;
-  color: var(--error__color);
-  font-weight: 700;
-  text-align: center;
-  background-color: var(--error__background-color);
-}
+  /* Page Level Errors */
+  .en__errorHeader {
+    padding: 0.5rem 2rem;
+    color: var(--error__color);
+    font-weight: 700;
+    text-align: center;
+    background-color: var(--error__background-color);
+  }
 
-.en__errorList > .en__error {
-  padding: 0.5rem 2rem;
-  list-style: none;
-  color: var(--error__color);
-  text-align: center;
-  background-color: var(--error__background-color);
-}
+  .en__errorList > .en__error {
+    padding: 0.5rem 2rem;
+    list-style: none;
+    color: var(--error__color);
+    text-align: center;
+    background-color: var(--error__background-color);
+  }
 
-.en__errorList > .en__error:last-child {
-  border-bottom: 5px solid var(--error__color);
-}
+  .en__errorList > .en__error:last-child {
+    border-bottom: 5px solid var(--error__color);
+  }
 
-/* Field Level Inline Errors */
+  /* Field Level Inline Errors */
 
-/* Pick up the normal spacing on the error element to contunue form pacing continues as expected when in an error state */
-// .en__component .en__field.en__field--select[class*="validationFail"],
-// .en__component .en__field.en__field--radio[class*="validationFail"],
-// .en__component .en__field.en__field--checkbox[class*="validationFail"],
-// .en__component .en__field.en__field--splittext[class*="validationFail"],
-// .en__component .en__field.en__field--tripletext[class*="validationFail"],
-// .en__component .en__field.en__field--splitselect[class*="validationFail"],
-// .en__component .en__field.en__field--tripleselect[class*="validationFail"] {
-//   margin-bottom: 1rem;
-// }
+  /* Pick up the normal spacing on the error element to contunue form pacing continues as expected when in an error state */
+  // .en__component .en__field.en__field--select[class*="validationFail"],
+  // .en__component .en__field.en__field--radio[class*="validationFail"],
+  // .en__component .en__field.en__field--checkbox[class*="validationFail"],
+  // .en__component .en__field.en__field--splittext[class*="validationFail"],
+  // .en__component .en__field.en__field--tripletext[class*="validationFail"],
+  // .en__component .en__field.en__field--splitselect[class*="validationFail"],
+  // .en__component .en__field.en__field--tripleselect[class*="validationFail"] {
+  //   margin-bottom: 1rem;
+  // }
 
-.en__component .en__field__error {
-  color: var(--error__color);
-  font-size: calc(max(75%, 10px));
-  order: 3;
-}
+  .en__component .en__field__error {
+    color: var(--error__color);
+    font-size: calc(max(75%, 10px));
+    order: 3;
+  }
 
-/************************************
+  /************************************
  * Field Placeholder Styling
  * @TODO Can this be simplified because we use Autoprefixer?
  ***********************************/
-[class*="validationFail"]:not(.has-focus):not(.has-value) {
-  --input_placeholder-color: var(--error__color);
-}
+  [class*="validationFail"]:not(.has-focus):not(.has-value) {
+    --input_placeholder-color: var(--error__color);
+  }
 
-// Compound Fields
-.en__field--splittext .en__field__error,
-.en__field--tripletext .en__field__error,
-.en__field--splitselect .en__field__error,
-.en__field--tripleselect .en__field__error,
-.en__field--radio .en__field__error,
-.en__field--checkbox .en__field__error,
-.en__field--rating .en__field__error,
-.en__field--imgselect .en__field__error,
-.en__field--withOther .en__field__error {
-  // padding-left: 0.5rem;
-  // padding-right: 0.5rem;
-}
+  // Compound Fields
+  .en__field--splittext .en__field__error,
+  .en__field--tripletext .en__field__error,
+  .en__field--splitselect .en__field__error,
+  .en__field--tripleselect .en__field__error,
+  .en__field--radio .en__field__error,
+  .en__field--checkbox .en__field__error,
+  .en__field--rating .en__field__error,
+  .en__field--imgselect .en__field__error,
+  .en__field--withOther .en__field__error {
+    // padding-left: 0.5rem;
+    // padding-right: 0.5rem;
+  }
 
-/* @TODO Not working anymore since we removed our corresponding JS */
-/* When EN's field validator flags an error it jumps the user to the first error on the page. Our custom error JS executes after EN's and sets a body level class that we can reorder the field presentation on. If we don't wait to re-order the fields, the page will jump to the error which appears below the input resulting in the user having to scroll up to make the change. This is something that should be fixed on EN's end and how they handle errors, but until then we need this work around */
-/* Code dependent on "oc-en-error-helpers.js" which must execute after EN's "pagedata.js" */
-body.error-jump-assist .en__component .en__field__error {
-  order: 1;
-}
+  /* @TODO Not working anymore since we removed our corresponding JS */
+  /* When EN's field validator flags an error it jumps the user to the first error on the page. Our custom error JS executes after EN's and sets a body level class that we can reorder the field presentation on. If we don't wait to re-order the fields, the page will jump to the error which appears below the input resulting in the user having to scroll up to make the change. This is something that should be fixed on EN's end and how they handle errors, but until then we need this work around */
+  /* Code dependent on "oc-en-error-helpers.js" which must execute after EN's "pagedata.js" */
+  &.error-jump-assist .en__component .en__field__error {
+    order: 1;
+  }
 
-[class*="validationFail"] label {
-  color: var(--error__color);
-}
+  [class*="validationFail"] label {
+    color: var(--error__color);
+  }
 
-[class*="validationFail"]:not(.has-value):not(.has-focus) [type],
-[class*="validationFail"]:not(.has-value):not(.has-focus) textarea,
-[class*="validationFail"]:not(.has-value):not(.has-focus) select {
-  border-color: var(--error__color);
-  background-color: var(--error__color_faded);
-}
+  [class*="validationFail"]:not(.has-value):not(.has-focus) [type],
+  [class*="validationFail"]:not(.has-value):not(.has-focus) textarea,
+  [class*="validationFail"]:not(.has-value):not(.has-focus) select {
+    border-color: var(--error__color);
+    background-color: var(--error__color_faded);
+  }
 
-.en__component
-  .en__field.en__field--select.en__field--withOther[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--radio[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--checkbox[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--splittext[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--tripletext[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--splitselect[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--tripleselect[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--imgselect[class*="validationFail"]
-  .en__field__element,
-.en__component
-  .en__field.en__field--rating[class*="validationFail"]
-  .en__field__element {
-  // border: var(--error__border-width) solid var(--error__color);
-  // background-color: var(--error__color_faded);
-  // padding-top: 0.5rem;
-  // margin-left: 0rem;
-  // margin-right: 0rem;
-  // border-radius: var(--input_border-radius);
-}
+  .en__component
+    .en__field.en__field--select.en__field--withOther[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--radio[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--checkbox[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--splittext[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--tripletext[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--splitselect[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--tripleselect[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--imgselect[class*="validationFail"]
+    .en__field__element,
+  .en__component
+    .en__field.en__field--rating[class*="validationFail"]
+    .en__field__element {
+    // border: var(--error__border-width) solid var(--error__color);
+    // background-color: var(--error__color_faded);
+    // padding-top: 0.5rem;
+    // margin-left: 0rem;
+    // margin-right: 0rem;
+    // border-radius: var(--input_border-radius);
+  }
 
-.en__field--text[class*="validationFail"] .en__field__error,
-.en__field--email[class*="validationFail"] .en__field__error,
-.en__field--telephone[class*="validationFail"] .en__field__error,
-.en__field--number[class*="validationFail"] .en__field__error,
-.en__field--textarea[class*="validationFail"] .en__field__error,
-.en__field--select[class*="validationFail"] .en__field__error,
-.en__component
-  .en__field.en__field--select.en__field--withOther[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--radio[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--checkbox[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--splittext[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--tripletext[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--splitselect[class*="validationFail"]
-  .en__field__error,
-.en__component
-  .en__field.en__field--tripleselect[class*="validationFail"]
-  .en__field__error {
-  // border-top-right-radius: 0px;
-  // border-top-left-radius: 0px;
-}
+  .en__field--text[class*="validationFail"] .en__field__error,
+  .en__field--email[class*="validationFail"] .en__field__error,
+  .en__field--telephone[class*="validationFail"] .en__field__error,
+  .en__field--number[class*="validationFail"] .en__field__error,
+  .en__field--textarea[class*="validationFail"] .en__field__error,
+  .en__field--select[class*="validationFail"] .en__field__error,
+  .en__component
+    .en__field.en__field--select.en__field--withOther[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--radio[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--checkbox[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--splittext[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--tripletext[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--splitselect[class*="validationFail"]
+    .en__field__error,
+  .en__component
+    .en__field.en__field--tripleselect[class*="validationFail"]
+    .en__field__error {
+    // border-top-right-radius: 0px;
+    // border-top-left-radius: 0px;
+  }
 
-.en__field--radio[class*="validationFail"]
-  .en__field--checkbox[class*="validationFail"] {
-  border-color: var(--error__color);
-}
+  .en__field--radio[class*="validationFail"]
+    .en__field--checkbox[class*="validationFail"] {
+    border-color: var(--error__color);
+  }
 
-[class*="validationFail"].has-value input,
-[class*="validationFail"].has-value textarea,
-.en__field--select[class*="validationFail"].has-value select {
-  // border-color: var(--error__color_grayscale);
-  // background-color: initial;
-}
+  [class*="validationFail"].has-value input,
+  [class*="validationFail"].has-value textarea,
+  .en__field--select[class*="validationFail"].has-value select {
+    // border-color: var(--error__color_grayscale);
+    // background-color: initial;
+  }
 
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--withOther[class*="validationFail"]
-  .en__field__element--radio {
-  border-radius: var(--donation-amount__button_border-radius);
-  margin-bottom: 0.5rem;
-}
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--withOther[class*="validationFail"]
+    .en__field__element--radio {
+    border-radius: var(--donation-amount__button_border-radius);
+    margin-bottom: 0.5rem;
+  }
 
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--withOther[class*="validationFail"]
-  .en__field__error {
-  border-radius: var(--donation-amount__button_border-radius);
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--withOther[class*="validationFail"]
+    .en__field__error {
+    border-radius: var(--donation-amount__button_border-radius);
+  }
 }

@@ -1,88 +1,90 @@
-//Tweet to target theming
+[data-engrid-theme] {
+  //Tweet to target theming
 
-/* Make sure that background colors are not hard coded */
-.en__twitterTarget,
-.en__tweetBackgroundText,
-.en__tweet,
-.en__tweetDisabled,
-.en__tweetButton,
-.en__tweetContact {
-  background-color: initial;
-}
-
-.en__component--tweetcontactblock .en__contacts {
-  flex-direction: column;
-}
-
-.en__tweetContact {
-  margin: 0 0 1rem 0;
-  padding: 0;
-  width: initial;
-}
-
-.en__twitterTarget__select {
-  // width: initial; // Required for flexbox sizing or will be set to 100% width
-}
-
-.en__twitterTarget__image,
-.en__twitterTarget__image:not([width]) {
-  margin-left: 0;
-  margin-right: 1rem;
-  width: initial; // Required for flexbox sizing because the image doesn't have a width and will be set to 100% width
-}
-
-// When the "Default" twitter image is used an empty source is added to an image which causes a grey border to be placed there by the browser. This can not be removed with CSS. The only option is to visually hide the parent image and allow the pseudo element remain with the fallback image
-// REF: https://stackoverflow.com/questions/1073015/how-do-i-remove-the-gray-border-that-surrounds-background-images
-// An empty src value might prevent the build process from being able to complete. For this reason we can substitute it with a # symbol which must then have the same styling applied to it as well
-.en__twitterTarget__image[src=""],
-.en__twitterTarget__image[src="#"] {
-  visibility: hidden;
-  display: block; // Needed to give it some structure because the lack of a resolving image creates issues in how the displayed layout is calculated
-  width: 3.75rem; // Needed to give it some structure because the lack of a resolving image creates issues in how the displayed layout is calculated
-
-  &:before {
-    visibility: visible;
+  /* Make sure that background colors are not hard coded */
+  .en__twitterTarget,
+  .en__tweetBackgroundText,
+  .en__tweet,
+  .en__tweetDisabled,
+  .en__tweetButton,
+  .en__tweetContact {
+    background-color: initial;
   }
-}
 
-.en__twitterTarget__details span {
-  display: block;
-}
+  .en__component--tweetcontactblock .en__contacts {
+    flex-direction: column;
+  }
 
-.en__twitterTarget__details br {
-  display: none;
-}
+  .en__tweetContact {
+    margin: 0 0 1rem 0;
+    padding: 0;
+    width: initial;
+  }
 
-// .en__tweetButton__send,
-// .en__tweetButton__sent {
-//   background-color: #f1700b;
-//   border-radius: 0;
-// }
+  .en__twitterTarget__select {
+    // width: initial; // Required for flexbox sizing or will be set to 100% width
+  }
 
-.en__twitterTarget,
-.en__tweet,
-.en__tweetButton {
-  padding-left: 0;
-  padding-right: 0;
-}
+  .en__twitterTarget__image,
+  .en__twitterTarget__image:not([width]) {
+    margin-left: 0;
+    margin-right: 1rem;
+    width: initial; // Required for flexbox sizing because the image doesn't have a width and will be set to 100% width
+  }
 
-.en__tweetButton a {
-  font-family: var(--button_font-family);
-  color: var(--button_color);
-  font-size: var(--button_font-size);
-  font-weight: var(--button_font-weight);
-  line-height: var(--button_line-height);
-  background-color: var(--button_background-color);
-  border-width: var(--button_border-width);
-  border-color: var(--button_border-color);
-  border-radius: var(--button_border-radius);
-  padding: var(--button_padding);
-  cursor: pointer;
-}
+  // When the "Default" twitter image is used an empty source is added to an image which causes a grey border to be placed there by the browser. This can not be removed with CSS. The only option is to visually hide the parent image and allow the pseudo element remain with the fallback image
+  // REF: https://stackoverflow.com/questions/1073015/how-do-i-remove-the-gray-border-that-surrounds-background-images
+  // An empty src value might prevent the build process from being able to complete. For this reason we can substitute it with a # symbol which must then have the same styling applied to it as well
+  .en__twitterTarget__image[src=""],
+  .en__twitterTarget__image[src="#"] {
+    visibility: hidden;
+    display: block; // Needed to give it some structure because the lack of a resolving image creates issues in how the displayed layout is calculated
+    width: 3.75rem; // Needed to give it some structure because the lack of a resolving image creates issues in how the displayed layout is calculated
 
-.en__tweetButton a:focus,
-.en__tweetButton a:hover {
-  color: var(--button_color_hover);
-  background-color: var(--button_background-color_hover);
-  border-color: var(--button_border-color_hover);
+    &:before {
+      visibility: visible;
+    }
+  }
+
+  .en__twitterTarget__details span {
+    display: block;
+  }
+
+  .en__twitterTarget__details br {
+    display: none;
+  }
+
+  // .en__tweetButton__send,
+  // .en__tweetButton__sent {
+  //   background-color: #f1700b;
+  //   border-radius: 0;
+  // }
+
+  .en__twitterTarget,
+  .en__tweet,
+  .en__tweetButton {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .en__tweetButton a {
+    font-family: var(--button_font-family);
+    color: var(--button_color);
+    font-size: var(--button_font-size);
+    font-weight: var(--button_font-weight);
+    line-height: var(--button_line-height);
+    background-color: var(--button_background-color);
+    border-width: var(--button_border-width);
+    border-color: var(--button_border-color);
+    border-radius: var(--button_border-radius);
+    padding: var(--button_padding);
+    cursor: pointer;
+  }
+
+  .en__tweetButton a:focus,
+  .en__tweetButton a:hover {
+    color: var(--button_color_hover);
+    background-color: var(--button_background-color_hover);
+    border-color: var(--button_border-color_hover);
+  }
 }

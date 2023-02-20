@@ -124,7 +124,7 @@ $two_col_body-column_min-width: 900px !default; // Overridable in client theme
 // ####################################################################
 
 // ENGrid Templates follow this markup pattern
-form > .en__component--row.en__component--advrow {
+[data-engrid-theme] form > .en__component--row.en__component--advrow {
   display: grid;
   width: 100%; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
   max-width: 100vw; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
@@ -146,331 +146,458 @@ form > .en__component--row.en__component--advrow {
   }
 }
 
-// Fixes issue with the grid not going right up to the last pixel of the browser. Recording: https://d.pr/v/g4ZCDA
-// Set the min-height of a page to the viewport height; except when embedded because there is no "viewport" as far as the iframe is concerned
-// This also prevents an issue with Safari where the height of the iFrame'ed page can not be calculated correctly (https://d.pr/v/O2kcrb)
-body:not([data-engrid-embedded]) > #engrid > form {
-  height: 100vh;
-}
-
-// @TODO This might not be neccessary
-body:not([data-engrid-embedded])
-  form
-  > .en__component--row.en__component--advrow {
-  min-height: 100vh;
-}
-
-// Free and Flexible Templates follow this markup pattern
-#engrid > .en__component--row.en__component--advrow {
-  display: grid;
-  width: 100%; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
-  max-width: 100vw; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
-}
-
-// For Free and Flexible Templates you will have an "advanced row" inside another "advanced row".
-// Forces Advanced Rows that are direct decendents of the form tag to display as Flexboxes again
-.en__component--row.en__component--advrow
-  form
-  > .en__component--row.en__component--advrow {
-  display: flex;
-}
-
-/*
-* ##########################################################
-* # ENGRID - BODY Column Breakpoint Styling
-* ##########################################################
-*/
-
-// Define all the named columns of the ENGrid
-// The 'pseudo-subgrid' is used to position first generation child content horizontally in page spanning grid components'
-/* prettier-ignore */
-form > .en__component--advrow,
-#engrid > .en__component--advrow,
-form > .en__component--advrow > *{
-  /* autoprefixer grid: off */
-  grid-template-columns:
-  [
-    pc-start lpc-start lpc-end cc-start lcc-start lcc-end bc-start lbc-start lbc-end
-  ] auto [
-    rbc-start rbc-end bc-end rcc-start rcc-end cc-end rpc-start rpc-end pc-end
-  ];
-}
-
-// Define all the named rows of the ENGrid
-/* prettier-ignore */
-form > .en__component--advrow,
-#engrid > .en__component--advrow{
-  /* autoprefixer grid: off */
-  grid-template-rows:
-  [
-    page-start page-alert-start]        min-content        [page-alert-end
-    content-header-start]               min-content        [content-header-end
-    body-headerOutside-start]           min-content        [body-headerOutside-end
-    body-header-start]                  min-content        [body-header-end
-    body-title-start]                   min-content        [body-title-end
-    body-banner-start]                  min-content        [body-banner-end
-    body-bannerOverlay-start]           min-content        [body-bannerOverlay-end
-    body-top-start]                     min-content        [body-top-end
-    body-side-start]                    min-content        [body-side-end  
-    body-main-start]                    min-content        [body-main-end  
-    body-bottom-start]                  min-content        [body-bottom-end  
-    body-footer-start]                  min-content        [body-footer-end
-    body-footerOutside-start]           min-content        [body-footerOutside-end  
-    content-footerSpacer-start]         minmax(0px, 1fr)   [content-footerSpacer-end
-    content-preFooter-start]            min-content        [content-preFooter-end
-    content-footer-start]               min-content        [content-footer-end
-    page-backgroundImage-start]         min-content        [page-backgroundImage-end
-    page-backgroundImageOverlay-start]  min-content        [page-backgroundImageOverlay-end page-end
-    page-customCode-start]              min-content        [page-customCode-end        
-  ];        
-}
-
-// Add Background Colors to the ENGrid Sections
-// Assign each named section of the ENGrid to its designated row and column.
-.page-alert {
-  grid-column: pc;
-  grid-row: page-alert;
-  background-color: var(--engrid__page-alert_background-color);
-  padding: var(--engrid__page-alert_padding);
-  margin: var(--engrid__page-alert_margin);
-}
-
-.content-header {
-  grid-column: pc;
-  grid-row: content-header;
-  background-color: var(--engrid__content-header_background-color);
-  padding: var(--engrid__content-header_padding);
-  margin: var(--engrid__content-header_margin);
-}
-
-.body-headerOutside {
-  grid-column: bc;
-  grid-row: body-headerOutside;
-  background-color: var(--engrid__body-headerOutside_background-color);
-  padding: var(--engrid__body-headerOutside_padding);
-  margin: var(--engrid__body-headerOutside_margin);
-}
-
-.body-header {
-  grid-column: bc;
-  grid-row: body-header;
-  background-color: var(--engrid__body-header_background-color);
-  border-top-left-radius: var(--engrid__body_border-radius);
-  border-top-right-radius: var(--engrid__body_border-radius);
-  min-height: var(--engrid__body_border-radius);
-  padding: var(--engrid__body-header_padding);
-  margin: var(--engrid__body-header_margin);
-}
-
-.body-title {
-  grid-column: bc;
-  grid-row: body-title;
-  background-color: var(--engrid__body-title_background-color);
-  padding: var(--engrid__body-title_padding);
-  margin: var(--engrid__body-title_margin);
-}
-
-.body-banner {
-  grid-column: bc;
-  grid-row: body-banner;
-  background-color: var(--engrid__body-banner_background-color);
-  padding: var(--engrid__body-banner_padding);
-  margin: var(--engrid__body-banner_margin);
-}
-
-.body-bannerOverlay {
-  grid-column: bc;
-  grid-row: body-banner;
-  background-color: var(--engrid__body-bannerOverlay_background-color);
-  padding: var(--engrid__body-bannerOverlay_padding);
-  margin: var(--engrid__body-bannerOverlay_margin);
-}
-
-.body-top {
-  grid-column: bc;
-  grid-row: body-top;
-  background-color: var(--engrid__body-top_background-color);
-  padding: var(--engrid__body-top_padding);
-  margin: var(--engrid__body-top_margin);
-}
-
-.body-side {
-  grid-column: bc;
-  grid-row: body-side;
-  background-color: var(--engrid__body-side_background-color);
-  padding: var(--engrid__body-side_padding);
-  margin: var(--engrid__body-side_margin);
-}
-
-.body-main {
-  grid-column: bc;
-  grid-row: body-main;
-  background-color: var(--engrid__body-main_background-color);
-  padding: var(--engrid__body-main_padding);
-  margin: var(--engrid__body-main_margin);
-}
-
-.body-bottom {
-  grid-column: bc;
-  grid-row: body-bottom;
-  background-color: var(--engrid__body-bottom_background-color);
-  padding: var(--engrid__body-bottom_padding);
-  margin: var(--engrid__body-bottom_margin);
-}
-
-.body-footer {
-  grid-column: bc;
-  grid-row: body-footer;
-  background-color: var(--engrid__body-footer_background-color);
-  border-bottom-left-radius: var(--engrid__body_border-radius);
-  border-bottom-right-radius: var(--engrid__body_border-radius);
-  min-height: var(--engrid__body_border-radius);
-  padding: var(--engrid__body-footer_padding);
-  margin: var(--engrid__body-footer_margin);
-}
-
-.body-footerOutside {
-  grid-column: bc;
-  grid-row: body-footerOutside;
-  background-color: var(--engrid__body-footerOutside_background-color);
-  padding: var(--engrid__body-footerOutside_padding);
-  margin: var(--engrid__body-footerOutside_margin);
-}
-
-.content-footerSpacer {
-  grid-column: cc;
-  grid-row: content-footerSpacer;
-  background-color: var(--engrid__content-footerSpacer_background-color);
-  padding: var(--engrid__content-footerSpacer_padding);
-  margin: var(--engrid__content-footerSpacer_margin);
-}
-
-.content-preFooter {
-  grid-column: cc;
-  grid-row: content-preFooter;
-  background-color: var(--engrid__content-preFooter_background-color);
-  padding: var(--engrid__content-preFooter_padding);
-  margin: var(--engrid__content-preFooter_margin);
-}
-
-.content-footer {
-  grid-column: pc;
-  grid-row: content-footer;
-  background-color: var(--engrid__content-footer_background-color);
-  padding: var(--engrid__content-footer_padding);
-  margin: var(--engrid__content-footer_margin);
-}
-
-.page-backgroundImage {
-  grid-column: pc;
-  grid-row: page-backgroundImage;
-  padding: var(--engrid__page-backgroundImage_padding);
-  margin: var(--engrid__page-backgroundImage_margin);
-}
-
-// Background color is set on the :before so it doesn't paint over the background image which will be set there
-// REF: _engrid-background-image.scss
-.page-backgroundImage:before {
-  background-color: var(--engrid__page-backgroundImage_background-color);
-}
-
-.page-backgroundImageOverlay {
-  grid-column: pc;
-  grid-row: page-backgroundImage;
-  background-color: var(--engrid__page-backgroundImageOverlay_background-color);
-  padding: var(--engrid__page-backgroundImageOverlay_padding);
-  margin: var(--engrid__page-backgroundImageOverlay_margin);
-}
-
-.page-customCode {
-  grid-column: pc;
-  grid-row: page-customCode;
-  background-color: var(--engrid__page-customCode_background-color);
-  padding: var(--engrid__page-customCode_padding);
-  margin: var(--engrid__page-customCode_margin);
-}
-
-// The ENGrid Custom Code section should never be visible outside of page builder
-body:not(#en__pagebuilder) .page-customCode {
-  display: none;
-}
-
-// This is super hacky because of the lose matching that's trying to tell if an ENGrid section class name is present on the row or not
-// If not, then this non ENGrid existant row gets assigned to a non-existant row name so that it is placed at the bottom of the grid
-form > .en__component--advrow:not([class*="-"]) > div {
-  grid-row: na;
-}
-
-/*
-* ##########################################################
-* # ENGRID - Section Stylings
-* ##########################################################
-*/
-
-// .body-header,
-// .body-title,
-// .body-top,
-// .body-side,
-// .body-main,
-// .body-bottom,
-// .body-footer {
-//   padding-left: var(--spacing_lg);
-//   padding-right: var(--spacing_lg);
-// }
-
-.body-bannerOverlay {
-  position: relative;
-  // padding-left: var(--spacing_lg);
-  // padding-right: var(--spacing_lg);
-}
-
-// The overlay should be hidden if it's empty so any figcaptions with links can be clicked
-body:not(#en__pagebuilder) .body-bannerOverlay:empty {
-  display: none;
-}
-
-.body-footer {
-  // padding-bottom: var(--spacing_lg);
-}
-
-// Add drop shadows to the body sections
-.en__component--column.body-header,
-.en__component--column.body-title,
-.en__component--column.body-banner,
-.en__component--column.body-top,
-.en__component--column.body-side,
-.en__component--column.body-main,
-.en__component--column.body-bottom,
-.en__component--column.body-footer {
-  position: relative;
-}
-
-// A mixin for applying the body drop shadow style to any one column layout
-@mixin add-body-drop-shadow($target) {
-  #{$target} {
-    box-shadow: var(--engrid__body_box-shadow);
+[data-engrid-theme] {
+  // Fixes issue with the grid not going right up to the last pixel of the browser. Recording: https://d.pr/v/g4ZCDA
+  // Set the min-height of a page to the viewport height; except when embedded because there is no "viewport" as far as the iframe is concerned
+  // This also prevents an issue with Safari where the height of the iFrame'ed page can not be calculated correctly (https://d.pr/v/O2kcrb)
+  &:not([data-engrid-embedded]) > #engrid > form {
+    height: 100vh;
   }
-}
 
-// Everything needed for applying the body drop shadow effect to the page
-[data-engrid-layout*="1col"] {
-  @include add-body-drop-shadow(
-    'div:not(.pboAdvancedRow__preview) .en__component--advcolumn[class*="body-" i]:not([class*="outside" i]):not([class*="overlay" i])'
-  );
+  // @TODO This might not be neccessary
+  &:not([data-engrid-embedded])
+    form
+    > .en__component--row.en__component--advrow {
+    min-height: 100vh;
+  }
 
-  // If there is no conent in the body banner, then we can add the drop shadow to the banner overlay should that have content
-  @include add-body-drop-shadow(
-    "&[data-engrid-no-body-banner] .body-bannerOverlay"
-  );
-}
+  // Free and Flexible Templates follow this markup pattern
+  #engrid > .en__component--row.en__component--advrow {
+    display: grid;
+    width: 100%; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
+    max-width: 100vw; // Ensure the ENGrid advanced row (there should only be one) occupies the full viewport at a minimum
+  }
 
-div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-header {
-  z-index: 2 !important;
-}
+  // For Free and Flexible Templates you will have an "advanced row" inside another "advanced row".
+  // Forces Advanced Rows that are direct decendents of the form tag to display as Flexboxes again
+  .en__component--row.en__component--advrow
+    form
+    > .en__component--row.en__component--advrow {
+    display: flex;
+  }
 
-div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-banner,
-div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-bannerOverlay {
-  z-index: 3 !important;
+  /*
+  * ##########################################################
+  * # ENGRID - BODY Column Breakpoint Styling
+  * ##########################################################
+  */
+
+  // Define all the named columns of the ENGrid
+  // The 'pseudo-subgrid' is used to position first generation child content horizontally in page spanning grid components'
+  /* prettier-ignore */
+  form > .en__component--advrow,
+  #engrid > .en__component--advrow,
+  form > .en__component--advrow > *{
+    /* autoprefixer grid: off */
+    grid-template-columns:
+    [
+      pc-start lpc-start lpc-end cc-start lcc-start lcc-end bc-start lbc-start lbc-end
+    ] auto [
+      rbc-start rbc-end bc-end rcc-start rcc-end cc-end rpc-start rpc-end pc-end
+    ];
+  }
+
+  // Define all the named rows of the ENGrid
+  /* prettier-ignore */
+  form > .en__component--advrow,
+  #engrid > .en__component--advrow{
+    /* autoprefixer grid: off */
+    grid-template-rows:
+    [
+      page-start page-alert-start]        min-content        [page-alert-end
+      content-header-start]               min-content        [content-header-end
+      body-headerOutside-start]           min-content        [body-headerOutside-end
+      body-header-start]                  min-content        [body-header-end
+      body-title-start]                   min-content        [body-title-end
+      body-banner-start]                  min-content        [body-banner-end
+      body-bannerOverlay-start]           min-content        [body-bannerOverlay-end
+      body-top-start]                     min-content        [body-top-end
+      body-side-start]                    min-content        [body-side-end  
+      body-main-start]                    min-content        [body-main-end  
+      body-bottom-start]                  min-content        [body-bottom-end  
+      body-footer-start]                  min-content        [body-footer-end
+      body-footerOutside-start]           min-content        [body-footerOutside-end  
+      content-footerSpacer-start]         minmax(0px, 1fr)   [content-footerSpacer-end
+      content-preFooter-start]            min-content        [content-preFooter-end
+      content-footer-start]               min-content        [content-footer-end
+      page-backgroundImage-start]         min-content        [page-backgroundImage-end
+      page-backgroundImageOverlay-start]  min-content        [page-backgroundImageOverlay-end page-end
+      page-customCode-start]              min-content        [page-customCode-end        
+    ];        
+  }
+
+  // Add Background Colors to the ENGrid Sections
+  // Assign each named section of the ENGrid to its designated row and column.
+  .page-alert {
+    grid-column: pc;
+    grid-row: page-alert;
+    background-color: var(--engrid__page-alert_background-color);
+    padding: var(--engrid__page-alert_padding);
+    margin: var(--engrid__page-alert_margin);
+  }
+
+  .content-header {
+    grid-column: pc;
+    grid-row: content-header;
+    background-color: var(--engrid__content-header_background-color);
+    padding: var(--engrid__content-header_padding);
+    margin: var(--engrid__content-header_margin);
+  }
+
+  .body-headerOutside {
+    grid-column: bc;
+    grid-row: body-headerOutside;
+    background-color: var(--engrid__body-headerOutside_background-color);
+    padding: var(--engrid__body-headerOutside_padding);
+    margin: var(--engrid__body-headerOutside_margin);
+  }
+
+  .body-header {
+    grid-column: bc;
+    grid-row: body-header;
+    background-color: var(--engrid__body-header_background-color);
+    border-top-left-radius: var(--engrid__body_border-radius);
+    border-top-right-radius: var(--engrid__body_border-radius);
+    min-height: var(--engrid__body_border-radius);
+    padding: var(--engrid__body-header_padding);
+    margin: var(--engrid__body-header_margin);
+  }
+
+  .body-title {
+    grid-column: bc;
+    grid-row: body-title;
+    background-color: var(--engrid__body-title_background-color);
+    padding: var(--engrid__body-title_padding);
+    margin: var(--engrid__body-title_margin);
+  }
+
+  .body-banner {
+    grid-column: bc;
+    grid-row: body-banner;
+    background-color: var(--engrid__body-banner_background-color);
+    padding: var(--engrid__body-banner_padding);
+    margin: var(--engrid__body-banner_margin);
+  }
+
+  .body-bannerOverlay {
+    grid-column: bc;
+    grid-row: body-banner;
+    background-color: var(--engrid__body-bannerOverlay_background-color);
+    padding: var(--engrid__body-bannerOverlay_padding);
+    margin: var(--engrid__body-bannerOverlay_margin);
+  }
+
+  .body-top {
+    grid-column: bc;
+    grid-row: body-top;
+    background-color: var(--engrid__body-top_background-color);
+    padding: var(--engrid__body-top_padding);
+    margin: var(--engrid__body-top_margin);
+  }
+
+  .body-side {
+    grid-column: bc;
+    grid-row: body-side;
+    background-color: var(--engrid__body-side_background-color);
+    padding: var(--engrid__body-side_padding);
+    margin: var(--engrid__body-side_margin);
+  }
+
+  .body-main {
+    grid-column: bc;
+    grid-row: body-main;
+    background-color: var(--engrid__body-main_background-color);
+    padding: var(--engrid__body-main_padding);
+    margin: var(--engrid__body-main_margin);
+  }
+
+  .body-bottom {
+    grid-column: bc;
+    grid-row: body-bottom;
+    background-color: var(--engrid__body-bottom_background-color);
+    padding: var(--engrid__body-bottom_padding);
+    margin: var(--engrid__body-bottom_margin);
+  }
+
+  .body-footer {
+    grid-column: bc;
+    grid-row: body-footer;
+    background-color: var(--engrid__body-footer_background-color);
+    border-bottom-left-radius: var(--engrid__body_border-radius);
+    border-bottom-right-radius: var(--engrid__body_border-radius);
+    min-height: var(--engrid__body_border-radius);
+    padding: var(--engrid__body-footer_padding);
+    margin: var(--engrid__body-footer_margin);
+  }
+
+  .body-footerOutside {
+    grid-column: bc;
+    grid-row: body-footerOutside;
+    background-color: var(--engrid__body-footerOutside_background-color);
+    padding: var(--engrid__body-footerOutside_padding);
+    margin: var(--engrid__body-footerOutside_margin);
+  }
+
+  .content-footerSpacer {
+    grid-column: cc;
+    grid-row: content-footerSpacer;
+    background-color: var(--engrid__content-footerSpacer_background-color);
+    padding: var(--engrid__content-footerSpacer_padding);
+    margin: var(--engrid__content-footerSpacer_margin);
+  }
+
+  .content-preFooter {
+    grid-column: cc;
+    grid-row: content-preFooter;
+    background-color: var(--engrid__content-preFooter_background-color);
+    padding: var(--engrid__content-preFooter_padding);
+    margin: var(--engrid__content-preFooter_margin);
+  }
+
+  .content-footer {
+    grid-column: pc;
+    grid-row: content-footer;
+    background-color: var(--engrid__content-footer_background-color);
+    padding: var(--engrid__content-footer_padding);
+    margin: var(--engrid__content-footer_margin);
+  }
+
+  .page-backgroundImage {
+    grid-column: pc;
+    grid-row: page-backgroundImage;
+    padding: var(--engrid__page-backgroundImage_padding);
+    margin: var(--engrid__page-backgroundImage_margin);
+  }
+
+  // Background color is set on the :before so it doesn't paint over the background image which will be set there
+  // REF: _engrid-background-image.scss
+  .page-backgroundImage:before {
+    background-color: var(--engrid__page-backgroundImage_background-color);
+  }
+
+  .page-backgroundImageOverlay {
+    grid-column: pc;
+    grid-row: page-backgroundImage;
+    background-color: var(
+      --engrid__page-backgroundImageOverlay_background-color
+    );
+    padding: var(--engrid__page-backgroundImageOverlay_padding);
+    margin: var(--engrid__page-backgroundImageOverlay_margin);
+  }
+
+  .page-customCode {
+    grid-column: pc;
+    grid-row: page-customCode;
+    background-color: var(--engrid__page-customCode_background-color);
+    padding: var(--engrid__page-customCode_padding);
+    margin: var(--engrid__page-customCode_margin);
+  }
+
+  // The ENGrid Custom Code section should never be visible outside of page builder
+  &:not(#en__pagebuilder) .page-customCode {
+    display: none;
+  }
+
+  // This is super hacky because of the lose matching that's trying to tell if an ENGrid section class name is present on the row or not
+  // If not, then this non ENGrid existant row gets assigned to a non-existant row name so that it is placed at the bottom of the grid
+  form > .en__component--advrow:not([class*="-"]) > div {
+    grid-row: na;
+  }
+
+  /*
+  * ##########################################################
+  * # ENGRID - Section Stylings
+  * ##########################################################
+  */
+
+  // .body-header,
+  // .body-title,
+  // .body-top,
+  // .body-side,
+  // .body-main,
+  // .body-bottom,
+  // .body-footer {
+  //   padding-left: var(--spacing_lg);
+  //   padding-right: var(--spacing_lg);
+  // }
+
+  .body-bannerOverlay {
+    position: relative;
+    // padding-left: var(--spacing_lg);
+    // padding-right: var(--spacing_lg);
+  }
+
+  // The overlay should be hidden if it's empty so any figcaptions with links can be clicked
+  &:not(#en__pagebuilder) .body-bannerOverlay:empty {
+    display: none;
+  }
+
+  .body-footer {
+    // padding-bottom: var(--spacing_lg);
+  }
+
+  // Add drop shadows to the body sections
+  .en__component--column.body-header,
+  .en__component--column.body-title,
+  .en__component--column.body-banner,
+  .en__component--column.body-top,
+  .en__component--column.body-side,
+  .en__component--column.body-main,
+  .en__component--column.body-bottom,
+  .en__component--column.body-footer {
+    position: relative;
+  }
+
+  // A mixin for applying the body drop shadow style to any one column layout
+  @mixin add-body-drop-shadow($target) {
+    #{$target} {
+      box-shadow: var(--engrid__body_box-shadow);
+    }
+  }
+
+  // Everything needed for applying the body drop shadow effect to the page
+  &[data-engrid-layout*="1col"] {
+    @include add-body-drop-shadow(
+      'div:not(.pboAdvancedRow__preview) .en__component--advcolumn[class*="body-" i]:not([class*="outside" i]):not([class*="overlay" i])'
+    );
+
+    // If there is no conent in the body banner, then we can add the drop shadow to the banner overlay should that have content
+    @include add-body-drop-shadow(
+      "&[data-engrid-no-body-banner] .body-bannerOverlay"
+    );
+  }
+
+  div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-header {
+    z-index: 2 !important;
+  }
+
+  div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-banner,
+  div:not(.pboAdvancedRow__preview)
+    .en__component--advcolumn.body-bannerOverlay {
+    z-index: 3 !important;
+  }
+
+  // The overlay should be hidden if it's empty so any figcaptions with links can be clicked
+  &:not(#en__pagebuilder) .page-backgroundImageOverlay:empty {
+    display: none;
+  }
+
+  // The figcaption on the background image is not ready for primetime yet. It can get hidden on scroll, or the margin can become off when its placement gets adjusted (https://d.pr/v/xxv2C6)
+  &:not(#en__pagebuilder) .page-backgroundImage figcaption {
+    display: none;
+  }
+
+  // ####################################################################
+  //  Explicitly set every sections default z-index
+  // ####################################################################
+
+  &:not(#en__pagebuilder) {
+    .page-alert,
+    .page-customCode {
+      z-index: 7; // Highest default z-index
+    }
+
+    .content-header,
+    .content-footerSpacer,
+    .content-preFooter,
+    .content-footer {
+      z-index: 6;
+    }
+
+    .body-bannerOverlay {
+      z-index: 5;
+    }
+
+    .body-headerOutside,
+    .body-header,
+    .body-title,
+    .body-banner,
+    .body-top,
+    .body-side,
+    .body-main,
+    .body-bottom,
+    .body-footer,
+    .body-footerOutside {
+      z-index: 4;
+    }
+
+    // z-index has to be negative or it will overlap content areas and make them non-clickable
+    .body-header:before,
+    .body-title:before,
+    .body-banner:before,
+    .body-top:before,
+    .body-side:before,
+    .body-main:before,
+    .body-bottom:before,
+    .body-footer:before {
+      z-index: -1;
+    }
+
+    .page-backgroundImageOverlay {
+      z-index: -2;
+    }
+
+    // z-index has to be negative or it will overlap content areas like the skip-link
+    .page-backgroundImage {
+      z-index: -3; // Lowest default z-index
+    }
+  }
+
+  // ####################################################################
+  //  Outside of page builder, if a grid section contains no content, hide it. Except for footerSpacer.
+  // ####################################################################
+
+  // Testing out a new method for hiding ENGrid sections
+  // Excludes body-header
+  // Excludes body-footer
+  // Excludes content-footerSpacer
+  &:not(#en__pagebuilder)[data-engrid-no-page-alert]
+    .en__component--advrow
+    .page-alert,
+  &:not(#en__pagebuilder)[data-engrid-no-content-header]
+    .en__component--advrow
+    .content-header,
+  &:not(#en__pagebuilder)[data-engrid-no-body-headerOutside]
+    .en__component--advrow
+    .body-headerOutside,
+  &:not(#en__pagebuilder)[data-engrid-no-body-title]
+    .en__component--advrow
+    .body-title,
+  &:not(#en__pagebuilder)[data-engrid-no-body-banner]
+    .en__component--advrow
+    .body-banner,
+  &:not(#en__pagebuilder)[data-engrid-no-body-bannerOverlay]
+    .en__component--advrow
+    .body-bannerOverlay,
+  &:not(#en__pagebuilder)[data-engrid-no-body-top]
+    .en__component--advrow
+    .body-top,
+  &:not(#en__pagebuilder)[data-engrid-no-body-main]
+    .en__component--advrow
+    .body-main,
+  &:not(#en__pagebuilder)[data-engrid-no-body-bottom]
+    .en__component--advrow
+    .body-bottom,
+  &:not(#en__pagebuilder)[data-engrid-no-body-footerOutside]
+    .en__component--advrow
+    .body-footerOutside,
+  &:not(#en__pagebuilder)[data-engrid-no-content-preFooter]
+    .en__component--advrow
+    .content-preFooter,
+  &:not(#en__pagebuilder)[data-engrid-no-content-footer]
+    .en__component--advrow
+    .content-footer,
+  &:not(#en__pagebuilder)[data-engrid-no-page-backgroundImage]
+    .en__component--advrow
+    .page-backgroundImage,
+  &:not(#en__pagebuilder)[data-engrid-no-page-backgroundImageOverlay]
+    .en__component--advrow
+    .page-backgroundImageOverlay,
+  &:not(#en__pagebuilder)[data-engrid-no-page-customCode]
+    .en__component--advrow
+    .page-customCode {
+    display: none;
+  }
 }
 
 // A mixin for removing the body drop sahdow style
@@ -480,126 +607,4 @@ div:not(.pboAdvancedRow__preview) .en__component--advcolumn.body-bannerOverlay {
       --engrid__body_box-shadow: none;
     }
   }
-}
-
-// The overlay should be hidden if it's empty so any figcaptions with links can be clicked
-body:not(#en__pagebuilder) .page-backgroundImageOverlay:empty {
-  display: none;
-}
-
-// The figcaption on the background image is not ready for primetime yet. It can get hidden on scroll, or the margin can become off when its placement gets adjusted (https://d.pr/v/xxv2C6)
-body:not(#en__pagebuilder) .page-backgroundImage figcaption {
-  display: none;
-}
-
-// ####################################################################
-//  Explicitly set every sections default z-index
-// ####################################################################
-
-body:not(#en__pagebuilder) {
-  .page-alert,
-  .page-customCode {
-    z-index: 7; // Highest default z-index
-  }
-
-  .content-header,
-  .content-footerSpacer,
-  .content-preFooter,
-  .content-footer {
-    z-index: 6;
-  }
-
-  .body-bannerOverlay {
-    z-index: 5;
-  }
-
-  .body-headerOutside,
-  .body-header,
-  .body-title,
-  .body-banner,
-  .body-top,
-  .body-side,
-  .body-main,
-  .body-bottom,
-  .body-footer,
-  .body-footerOutside {
-    z-index: 4;
-  }
-
-  // z-index has to be negative or it will overlap content areas and make them non-clickable
-  .body-header:before,
-  .body-title:before,
-  .body-banner:before,
-  .body-top:before,
-  .body-side:before,
-  .body-main:before,
-  .body-bottom:before,
-  .body-footer:before {
-    z-index: -1;
-  }
-
-  .page-backgroundImageOverlay {
-    z-index: -2;
-  }
-
-  // z-index has to be negative or it will overlap content areas like the skip-link
-  .page-backgroundImage {
-    z-index: -3; // Lowest default z-index
-  }
-}
-
-// ####################################################################
-//  Outside of page builder, if a grid section contains no content, hide it. Except for footerSpacer.
-// ####################################################################
-
-// Testing out a new method for hiding ENGrid sections
-// Excludes body-header
-// Excludes body-footer
-// Excludes content-footerSpacer
-body:not(#en__pagebuilder)[data-engrid-no-page-alert]
-  .en__component--advrow
-  .page-alert,
-body:not(#en__pagebuilder)[data-engrid-no-content-header]
-  .en__component--advrow
-  .content-header,
-body:not(#en__pagebuilder)[data-engrid-no-body-headerOutside]
-  .en__component--advrow
-  .body-headerOutside,
-body:not(#en__pagebuilder)[data-engrid-no-body-title]
-  .en__component--advrow
-  .body-title,
-body:not(#en__pagebuilder)[data-engrid-no-body-banner]
-  .en__component--advrow
-  .body-banner,
-body:not(#en__pagebuilder)[data-engrid-no-body-bannerOverlay]
-  .en__component--advrow
-  .body-bannerOverlay,
-body:not(#en__pagebuilder)[data-engrid-no-body-top]
-  .en__component--advrow
-  .body-top,
-body:not(#en__pagebuilder)[data-engrid-no-body-main]
-  .en__component--advrow
-  .body-main,
-body:not(#en__pagebuilder)[data-engrid-no-body-bottom]
-  .en__component--advrow
-  .body-bottom,
-body:not(#en__pagebuilder)[data-engrid-no-body-footerOutside]
-  .en__component--advrow
-  .body-footerOutside,
-body:not(#en__pagebuilder)[data-engrid-no-content-preFooter]
-  .en__component--advrow
-  .content-preFooter,
-body:not(#en__pagebuilder)[data-engrid-no-content-footer]
-  .en__component--advrow
-  .content-footer,
-body:not(#en__pagebuilder)[data-engrid-no-page-backgroundImage]
-  .en__component--advrow
-  .page-backgroundImage,
-body:not(#en__pagebuilder)[data-engrid-no-page-backgroundImageOverlay]
-  .en__component--advrow
-  .page-backgroundImageOverlay,
-body:not(#en__pagebuilder)[data-engrid-no-page-customCode]
-  .en__component--advrow
-  .page-customCode {
-  display: none;
 }

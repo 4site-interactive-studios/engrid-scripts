@@ -1,33 +1,38 @@
-/************************************
+[data-engrid-theme] {
+  /************************************
    * Utility: Hide Display
    * // Depends on corresponding JS library
    * .simple_country_select
    ***********************************/
 
-// Hide the Country field until it's marked for visibility
-body:not(#en__pagebuilder)
-  .simple_country_select:not(.country-select-visible)
-  .en__field--country {
-  display: none;
-}
+  // Hide the Country field until it's marked for visibility
+  &:not(#en__pagebuilder)
+    .simple_country_select:not(.country-select-visible)
+    .en__field--country {
+    display: none;
+  }
 
-// Show and style the Simple Country Select label
-.simple_country_select .en__field--address1 label {
-  flex-wrap: wrap;
+  // Show and style the Simple Country Select label
+  .simple_country_select .en__field--address1 label {
+    flex-wrap: wrap;
 
-  a {
-    cursor: pointer;
-    color: var(--a_color);
-    text-align: right;
+    a {
+      cursor: pointer;
+      color: var(--a_color);
+      text-align: right;
 
-    &:focus,
-    &:hover {
-      color: var(--a_color_hover);
+      &:focus,
+      &:hover {
+        color: var(--a_color_hover);
+      }
     }
   }
-}
 
-// Hide the Simple Country Select label once the Country field is visible
-.simple_country_select.country-select-visible .en__field--address1 label label {
-  display: none;
+  // Hide the Simple Country Select label once the Country field is visible
+  .simple_country_select.country-select-visible
+    .en__field--address1
+    label
+    label {
+    display: none;
+  }
 }

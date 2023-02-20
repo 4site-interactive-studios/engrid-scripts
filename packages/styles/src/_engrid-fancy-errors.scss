@@ -1,51 +1,55 @@
-/*
+[data-engrid-theme] {
+  /*
 * ##########################################################
 * # Field Level Inline "Fancy Errors"
 * ##########################################################
 */
 
-[data-engrid-errors="fancy"] {
-  .en__component--formblock .en__field[class*="validationFail"],
-  .en__component--svblock .en__field[class*="validationFail"] {
-    // margin-bottom: calc(var(--fields_spacing-block) * 2);
-  }
+  &[data-engrid-errors="fancy"] {
+    .en__component--formblock .en__field[class*="validationFail"],
+    .en__component--svblock .en__field[class*="validationFail"] {
+      // margin-bottom: calc(var(--fields_spacing-block) * 2);
+    }
 
-  .en__field__error {
-    padding: 0.25rem 0.5rem;
-    color: var(--color_white);
-    font-size: calc(max(75%, 10px)); // Do not let the font size fall below 10px
-    border-radius: var(--input_border-radius);
-    background-color: var(--error__color);
-    order: 3;
-  }
-
-  // .en__field--text[class*="validationFail"] input,
-  // .en__field--email[class*="validationFail"] input,
-  // .en__field--telephone[class*="validationFail"] input,
-  // .en__field--number[class*="validationFail"] input,
-  // .en__field--textarea[class*="validationFail"] textarea,
-  // .en__field--select[class*="validationFail"] select,
-  // .en__field--password[class*="validationFail"] input,
-  // .en__field--calendar[class*="validationFail"] input{
-  //   &:only-of-type{
-  //     margin-bottom: 0 !important;
-  //   }
-  // }
-
-  .en__field--select.en__field--withOther,
-  .en__field--radio,
-  .en__field--checkbox,
-  .en__field--splittext,
-  .en__field--tripletext,
-  .en__field--splitselect,
-  .en__field--tripleselec,
-  .en__field--calendar,
-  .en__field--imgselect,
-  .en__field--rating {
-    [class*="validationFail"].has-value {
-      border-color: var(--error__color_grayscale);
-      background-color: var(--error__color_grayscale);
+    .en__field__error {
+      padding: 0.25rem 0.5rem;
       color: var(--color_white);
+      font-size: calc(
+        max(75%, 10px)
+      ); // Do not let the font size fall below 10px
+      border-radius: var(--input_border-radius);
+      background-color: var(--error__color);
+      order: 3;
+    }
+
+    // .en__field--text[class*="validationFail"] input,
+    // .en__field--email[class*="validationFail"] input,
+    // .en__field--telephone[class*="validationFail"] input,
+    // .en__field--number[class*="validationFail"] input,
+    // .en__field--textarea[class*="validationFail"] textarea,
+    // .en__field--select[class*="validationFail"] select,
+    // .en__field--password[class*="validationFail"] input,
+    // .en__field--calendar[class*="validationFail"] input{
+    //   &:only-of-type{
+    //     margin-bottom: 0 !important;
+    //   }
+    // }
+
+    .en__field--select.en__field--withOther,
+    .en__field--radio,
+    .en__field--checkbox,
+    .en__field--splittext,
+    .en__field--tripletext,
+    .en__field--splitselect,
+    .en__field--tripleselec,
+    .en__field--calendar,
+    .en__field--imgselect,
+    .en__field--rating {
+      [class*="validationFail"].has-value {
+        border-color: var(--error__color_grayscale);
+        background-color: var(--error__color_grayscale);
+        color: var(--color_white);
+      }
     }
   }
 }

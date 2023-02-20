@@ -1,26 +1,28 @@
-/* Reset minimum and default width */
-.en__component--column {
-  min-width: auto; // Removed !important because we have better main.css placement in the Page Temaplte
-  width: auto; // Removed !important because we have better main.css placement in the Page Temaplte
-}
+[data-engrid-theme] {
+  /* Reset minimum and default width */
+  .en__component--column {
+    min-width: auto; // Removed !important because we have better main.css placement in the Page Temaplte
+    width: auto; // Removed !important because we have better main.css placement in the Page Temaplte
+  }
 
-/* EN sets width to 100%, without setting a max-width it can overflow offscreen */
-.en__component--column.en__component--advcolumn,
-.en__component--row--1 .en__component--column,
-.en__component--row--2 .en__component--column {
-  max-width: 100vw;
-}
+  /* EN sets width to 100%, without setting a max-width it can overflow offscreen */
+  .en__component--column.en__component--advcolumn,
+  .en__component--row--1 .en__component--column,
+  .en__component--row--2 .en__component--column {
+    max-width: 100vw;
+  }
 
-.en__component--row--1 {
-  flex-direction: column;
-}
+  .en__component--row--1 {
+    flex-direction: column;
+  }
 
-/* Fix for flexbox sub-pixel rounding causing a 1px jitter in Chrome. */
-/* And because EN inserts a div at the end of rows in the page builder, we needed to use a more permiscuse scope. */
-/* This fix has NOT been tested for regressions in other browsers */
-/* e.g https://d.pr/i/CRYKHa */
-body:not(#en__pagebuilder) .en__component--column:last-of-type,
-#en__pagebuilder .en__component--column {
-  position: relative;
-  right: -0.15px;
+  /* Fix for flexbox sub-pixel rounding causing a 1px jitter in Chrome. */
+  /* And because EN inserts a div at the end of rows in the page builder, we needed to use a more permiscuse scope. */
+  /* This fix has NOT been tested for regressions in other browsers */
+  /* e.g https://d.pr/i/CRYKHa */
+  &:not(#en__pagebuilder) .en__component--column:last-of-type,
+  &#en__pagebuilder .en__component--column {
+    position: relative;
+    right: -0.15px;
+  }
 }

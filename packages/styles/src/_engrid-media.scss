@@ -1,29 +1,31 @@
-// Makes all images and videos responsive
-img,
-video {
-  max-width: 100%;
-  margin: 0 auto;
-  display: inherit;
-  aspect-ratio: attr(width) / attr(height); // https://developer.mozilla.org/en-US/docs/Web/Media/images/aspect_ratio_mapping
-  height: auto;
-}
+[data-engrid-theme] {
+  // Makes all images and videos responsive
+  img,
+  video {
+    max-width: 100%;
+    margin: 0 auto;
+    display: inherit;
+    aspect-ratio: attr(width) / attr(height); // https://developer.mozilla.org/en-US/docs/Web/Media/images/aspect_ratio_mapping
+    height: auto;
+  }
 
-// If the image or video has no width defined, we can help it out to maintain its aspect ratio while responsively expanding to fill the constraints of the container it's placed within
-img:not([width]),
-video:not([width]) {
-  width: 100%;
-}
+  // If the image or video has no width defined, we can help it out to maintain its aspect ratio while responsively expanding to fill the constraints of the container it's placed within
+  img:not([width]),
+  video:not([width]) {
+    width: 100%;
+  }
 
-// Prevents text (file name) from being visible on an image while the it's downloading on a slow connection
-img {
-  color: transparent;
-}
+  // Prevents text (file name) from being visible on an image while the it's downloading on a slow connection
+  img {
+    color: transparent;
+  }
 
-// img[data-src]{
-//   font-size: 0;
-//   line-height: 0;
-// }
+  // img[data-src]{
+  //   font-size: 0;
+  //   line-height: 0;
+  // }
 
-body:not(#en__pagebuilder) img:not([src]):not([srcset]) {
-  visibility: hidden;
+  &:not(#en__pagebuilder) img:not([src]):not([srcset]) {
+    visibility: hidden;
+  }
 }

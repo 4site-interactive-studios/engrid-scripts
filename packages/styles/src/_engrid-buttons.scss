@@ -41,142 +41,142 @@
   // --submit__button_color_checked: var(--button_color_hover);
   // --submit__button_background-color_checked: var(--button_background-color_hover);
   // --submit__button_border-color_checked: var(--button_border-color_hover);
-}
 
-/* @TODO Design buttons with style (Primary, Secondary, Text Only, Outine)
+  /* @TODO Design buttons with style (Primary, Secondary, Text Only, Outine)
  * See #3 https://medium.com/eightshapes-llc/component-examples-9c4b3bb3b308
  */
 
-/* Buttons */
-button,
-.button,
-.en__button,
-.pseduo__en__submit_button,
-button.en__ticketRecurring__select,
-button.en__ticketSummary__checkout,
-button.en__eventOccurrence__select {
-  font-family: var(--button_font-family);
-  color: var(--button_color);
-  font-size: var(--button_font-size);
-  font-weight: var(--button_font-weight);
-  line-height: var(--button_line-height);
-  background-color: var(--button_background-color);
-  border-width: var(--button_border-width);
-  border-color: var(--button_border-color);
-  border-radius: var(--button_border-radius);
-  cursor: pointer;
-  border-style: solid;
-  display: block;
-  margin: 0 0 1rem 0;
-  padding: var(--button_padding);
-  text-transform: var(--button_text-transform);
-  -webkit-appearance: none;
-  -webkit-transition: background-color 0.2s ease-out, color 0.2s ease-out,
-    border-color 0.2s ease-out;
-  transition: background-color 0.2s ease-out, color 0.2s ease-out,
-    border-color 0.2s ease-out;
-  text-align: center;
+  /* Buttons */
+  button,
+  .button,
+  .en__button,
+  .pseduo__en__submit_button,
+  button.en__ticketRecurring__select,
+  button.en__ticketSummary__checkout,
+  button.en__eventOccurrence__select {
+    font-family: var(--button_font-family);
+    color: var(--button_color);
+    font-size: var(--button_font-size);
+    font-weight: var(--button_font-weight);
+    line-height: var(--button_line-height);
+    background-color: var(--button_background-color);
+    border-width: var(--button_border-width);
+    border-color: var(--button_border-color);
+    border-radius: var(--button_border-radius);
+    cursor: pointer;
+    border-style: solid;
+    display: block;
+    margin: 0 0 1rem 0;
+    padding: var(--button_padding);
+    text-transform: var(--button_text-transform);
+    -webkit-appearance: none;
+    -webkit-transition: background-color 0.2s ease-out, color 0.2s ease-out,
+      border-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out,
+      border-color 0.2s ease-out;
+    text-align: center;
 
-  &:focus,
-  &:hover {
-    color: var(--button_color_hover);
-    background-color: var(--button_background-color_hover);
-    border-color: var(--button_border-color_hover);
+    &:focus,
+    &:hover {
+      color: var(--button_color_hover);
+      background-color: var(--button_background-color_hover);
+      border-color: var(--button_border-color_hover);
+    }
+
+    &:active,
+    &.active {
+      color: var(--button_color_checked);
+      background-color: var(--button_background-color_checked);
+      border-color: var(--button_border-color_checked);
+    }
   }
 
-  &:active,
-  &.active {
+  // A links styled as buttons should not have a text decoration
+  a.button {
+    text-decoration: none;
+
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      text-decoration: none;
+    }
+  }
+
+  // The submit button container should span the full width of its parent
+  .en__submit {
+    width: 100%;
+  }
+
+  .en__submit button,
+  .en__submit .button,
+  .pseduo__en__submit_button {
+    color: var(--submit__button_color);
+    background-color: var(--submit__button_background-color);
+    border-color: var(--submit__button_border-color);
+    margin-top: 2rem;
+    padding-top: var(--submit__button_padding-top);
+    padding-bottom: var(--submit__button_padding-bottom);
+    text-transform: var(--submit__button_text-transform);
+    font-size: var(--submit__button_font-size);
+    width: 100%;
+    max-width: var(--submit__button_max-width);
+
+    &:focus,
+    &:hover {
+      color: var(--submit__button_color_hover);
+      background-color: var(--submit__button_background-color_hover);
+      border-color: var(--submit__button_border-color_hover);
+    }
+
+    &:active {
+      color: var(--submit__button_color_checked);
+      background-color: var(--submit__button_background-color_checked);
+      border-color: var(--submit__button_border-color_checked);
+    }
+  }
+
+  // @TODO The "primary" styling might no longer be needed
+  button.primary:hover,
+  button.primary:focus,
+  .button.primary:hover,
+  .button.primary:focus {
     color: var(--button_color_checked);
     background-color: var(--button_background-color_checked);
     border-color: var(--button_border-color_checked);
   }
-}
 
-// A links styled as buttons should not have a text decoration
-a.button {
-  text-decoration: none;
-
-  &:focus,
-  &:hover,
-  &:active,
-  &.active {
-    text-decoration: none;
-  }
-}
-
-// The submit button container should span the full width of its parent
-.en__submit {
-  width: 100%;
-}
-
-.en__submit button,
-.en__submit .button,
-.pseduo__en__submit_button {
-  color: var(--submit__button_color);
-  background-color: var(--submit__button_background-color);
-  border-color: var(--submit__button_border-color);
-  margin-top: 2rem;
-  padding-top: var(--submit__button_padding-top);
-  padding-bottom: var(--submit__button_padding-bottom);
-  text-transform: var(--submit__button_text-transform);
-  font-size: var(--submit__button_font-size);
-  width: 100%;
-  max-width: var(--submit__button_max-width);
-
-  &:focus,
-  &:hover {
-    color: var(--submit__button_color_hover);
-    background-color: var(--submit__button_background-color_hover);
-    border-color: var(--submit__button_border-color_hover);
+  .arrow .en__submit button::after,
+  .arrow .en__submit .button::after {
+    content: "→";
+    float: right;
+    margin-right: 1rem;
+    opacity: 0.9;
   }
 
-  &:active {
-    color: var(--submit__button_color_checked);
-    background-color: var(--submit__button_background-color_checked);
-    border-color: var(--submit__button_border-color_checked);
+  .arrow .en__submit button:disabled::after,
+  .arrow .en__submit .button:disabled::after {
+    display: none;
   }
-}
 
-// @TODO The "primary" styling might no longer be needed
-button.primary:hover,
-button.primary:focus,
-.button.primary:hover,
-.button.primary:focus {
-  color: var(--button_color_checked);
-  background-color: var(--button_background-color_checked);
-  border-color: var(--button_border-color_checked);
-}
+  .next-step .en__submit button,
+  .next-step .en__submit .button {
+    width: initial;
+    margin-left: auto;
+  }
 
-.arrow .en__submit button::after,
-.arrow .en__submit .button::after {
-  content: "→";
-  float: right;
-  margin-right: 1rem;
-  opacity: 0.9;
-}
+  button[disabled],
+  button[disabled]:hover,
+  button[disabled]:focus .button[disabled],
+  .button[disabled]:hover,
+  .button[disabled]:focus {
+    content: "Processing...";
+  }
 
-.arrow .en__submit button:disabled::after,
-.arrow .en__submit .button:disabled::after {
-  display: none;
-}
-
-.next-step .en__submit button,
-.next-step .en__submit .button {
-  width: initial;
-  margin-left: auto;
-}
-
-button[disabled],
-button[disabled]:hover,
-button[disabled]:focus .button[disabled],
-.button[disabled]:hover,
-.button[disabled]:focus {
-  content: "Processing...";
-}
-
-button[disabled],
-.button[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-  filter: grayscale(1);
+  button[disabled],
+  .button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
 }

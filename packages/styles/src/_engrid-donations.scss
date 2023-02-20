@@ -106,596 +106,668 @@
 
   // RADIO TO BUTTONS
   --radio-to-buttons__button_count: 4;
-}
 
-// Style the Donation Amount, Recurring Frequency, Radio to Buttons, and Give By Select Pseduo Fields as if they were buttons
+  // Style the Donation Amount, Recurring Frequency, Radio to Buttons, and Give By Select Pseduo Fields as if they were buttons
 
-// .en__field--splitselect.en__field--ccexpire {
-//     flex-basis: calc((100% / 3) * 2);
-//     min-width: auto;
-//     position: relative;
-//     left: -0.5rem;
-// }
+  .en__field--recurrfreq,
+  .en__field--recurrpay,
+  .en__field--donationAmt,
+  .en__field--give-by-select {
+    .en__field__element {
+      justify-content: center;
+    }
+  }
 
-// .en__field--ccvv {
-//     flex-basis: calc(100% / 3);
-//     min-width: auto;
-//     position: relative;
-//     right: -0.5rem;
-// }
+  .en__field--donationAmt.en__field--withOther .en__field__element--radio {
+    .en__field__item:nth-last-child(1) {
+      display: flex;
+    }
+    .en__field__item:nth-last-child(2) {
+      display: none;
+    }
+  }
 
-.en__field--recurrfreq .en__field__element,
-.en__field--recurrpay .en__field__element,
-.en__field--donationAmt .en__field__element,
-.en__field--give-by-select .en__field__element {
-  justify-content: center;
-}
+  // Hide the radio select fields when we style them like buttons
 
-.en__field--donationAmt.en__field--withOther
-  .en__field__element--radio
-  .en__field__item:nth-last-child(1) {
-  display: flex;
-}
+  .radio-to-buttons
+    .en__field--radio
+    .en__field--give-by-select.en__field--radio,
+  .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio,
+  .radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio,
+  .radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio {
+    .en__field__input--radio + .en__field__label:before {
+      display: none;
+    }
+  }
 
-.en__field--donationAmt.en__field--withOther
-  .en__field__element--radio
-  .en__field__item:nth-last-child(2) {
-  display: none;
-}
+  .radio-to-buttons
+    > .en__field
+    > .en__field__element
+    > .en__field__item:not(.en__field__item--other),
+  .en__field--give-by-select
+    > .en__field__element
+    .en__field__item:not(.en__field__item--other),
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    > .en__field__element
+    .en__field__item:not(.en__field__item--other),
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    > .en__field__element
+    .en__field__item:not(.en__field__item--other),
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    > .en__field__element
+    .en__field__item:not(.en__field__item--other) {
+    // padding-left: 0;
+    // padding-right: 0;
+    justify-content: center;
+    flex-shrink: 1;
+  }
 
-// Hide the radio select fields when we style them like buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio .en__field__input--radio+.en__field__label:before,
-.en__field--give-by-select.en__field--radio .en__field__input--radio+.en__field__label:before,
-.radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__input--radio+.en__field__label:before,
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio .en__field__input--radio+.en__field__label:before,
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio .en__field__input--radio+.en__field__label:before{
-	display: none;
-}
+  .radio-to-buttons
+    > .en__field
+    > .en__field__element
+    > .en__field__item--other,
+  .en__field--give-by-select > .en__field__element .en__field__item--other,
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    > .en__field__element
+    .en__field__item--other,
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    > .en__field__element
+    .en__field__item--other,
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    > .en__field__element
+    .en__field__item--other {
+    // padding-left: .5rem;
+    // padding-right: .5rem;
+    justify-content: center;
+    flex-shrink: 1;
+  }
 
-.radio-to-buttons
-  > .en__field
-  > .en__field__element
-  > .en__field__item:not(.en__field__item--other),
-.en__field--give-by-select
-  > .en__field__element
-  .en__field__item:not(.en__field__item--other),
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio
-  > .en__field__element
-  .en__field__item:not(.en__field__item--other),
-.radio-to-buttons_recurrfreq
-  .en__field--recurrfreq.en__field--radio
-  > .en__field__element
-  .en__field__item:not(.en__field__item--other),
-.radio-to-buttons_recurrpay
-  .en__field--recurrpay.en__field--radio
-  > .en__field__element
-  .en__field__item:not(.en__field__item--other) {
-  // padding-left: 0;
-  // padding-right: 0;
-  justify-content: center;
-  flex-shrink: 1;
-}
+  .radio-to-buttons
+    > .en__field
+    > .en__field__element
+    > .en__field__input--other {
+    border-radius: var(--button_border-radius);
+    border-width: var(--button_border-width);
+  }
 
-.radio-to-buttons > .en__field > .en__field__element > .en__field__item--other,
-.en__field--give-by-select > .en__field__element .en__field__item--other,
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio
-  > .en__field__element
-  .en__field__item--other,
-.radio-to-buttons_recurrfreq
-  .en__field--recurrfreq.en__field--radio
-  > .en__field__element
-  .en__field__item--other,
-.radio-to-buttons_recurrpay
-  .en__field--recurrpay.en__field--radio
-  > .en__field__element
-  .en__field__item--other {
-  // padding-left: .5rem;
-  // padding-right: .5rem;
-  justify-content: center;
-  flex-shrink: 1;
-}
+  .en__field--give-by-select > .en__field__element .en__field__input--other {
+    border-radius: var(--give-by-select__button_border-radius);
+    border-width: var(--give-by-select__button_border-width);
+  }
 
-.radio-to-buttons
-  > .en__field
-  > .en__field__element
-  > .en__field__input--other {
-  border-radius: var(--button_border-radius);
-  border-width: var(--button_border-width);
-}
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    > .en__field__element
+    .en__field__input--other {
+    border-radius: var(--donation-amount__button_border-radius);
+    border-width: var(--donation-amount__button_border-width);
+  }
 
-.en__field--give-by-select > .en__field__element .en__field__input--other {
-  border-radius: var(--give-by-select__button_border-radius);
-  border-width: var(--give-by-select__button_border-width);
-}
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    > .en__field__element
+    .en__field__input--other {
+    border-radius: var(--recurring-frequency__button_border-radius);
+    border-width: var(--recurring-frequency__button_border-width);
+  }
 
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio
-  > .en__field__element
-  .en__field__input--other {
-  border-radius: var(--donation-amount__button_border-radius);
-  border-width: var(--donation-amount__button_border-width);
-}
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    > .en__field__element
+    .en__field__input--other {
+    border-radius: var(--recurring-payment__button_border-radius);
+    border-width: var(--recurring-payment__button_border-width);
+  }
 
-.radio-to-buttons_recurrfreq
-  .en__field--recurrfreq.en__field--radio
-  > .en__field__element
-  .en__field__input--other {
-  border-radius: var(--recurring-frequency__button_border-radius);
-  border-width: var(--recurring-frequency__button_border-width);
-}
+  /*
+  ########################################################################
+  # DEFAULT STATE
+  ########################################################################
+  */
 
-.radio-to-buttons_recurrpay
-  .en__field--recurrpay.en__field--radio
-  > .en__field__element
-  .en__field__input--other {
-  border-radius: var(--recurring-payment__button_border-radius);
-  border-width: var(--recurring-payment__button_border-width);
-}
-
-/*
-########################################################################
-# DEFAULT STATE
-########################################################################
-*/
-
-// Radio to Buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio input[type=radio]+label{
-	font-family: var(--button_font-family);
+  // Radio to Buttons
+  .radio-to-buttons .en__field--radio input[type="radio"] + label {
+    font-family: var(--button_font-family);
     color: var(--button_color);
     font-size: var(--button_font-size);
     font-weight: var(--button_font-weight);
-	line-height: var(--button_line-height);
+    line-height: var(--button_line-height);
     background-color: var(--button_background-color);
     border-width: var(--button_border-width);
     border-color: var(--button_border-color);
     border-radius: var(--button_border-radius);
     text-transform: var(--button_text-transform);
-	border-style: solid;
-	// margin-left: 0.5rem;
-	// margin-right: 0.5rem;
+    border-style: solid;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
     padding: var(--button_padding);
-	background-position-x: 40px;
+    background-position-x: 40px;
     // width: 100%;
     text-align: center;
     justify-content: center;
     flex-flow: wrap;
-}
+  }
 
-.radio-to-buttons > .en__field > .en__field__element > .en__field__item {
-  flex-basis: calc(100% / var(--radio-to-buttons__button_count));
-}
+  .radio-to-buttons > .en__field > .en__field__element > .en__field__item {
+    flex-basis: calc(100% / var(--radio-to-buttons__button_count));
+  }
 
-.radio-to-buttons_count_1 {
-  --radio-to-buttons__button_count: 1;
-}
-.radio-to-buttons_count_2 {
-  --radio-to-buttons__button_count: 2;
-}
-.radio-to-buttons_count_3 {
-  --radio-to-buttons__button_count: 3;
-}
-.radio-to-buttons_count_4 {
-  --radio-to-buttons__button_count: 4;
-}
-.radio-to-buttons_count_5 {
-  --radio-to-buttons__button_count: 5;
-}
+  .radio-to-buttons_count_1 {
+    --radio-to-buttons__button_count: 1;
+  }
+  .radio-to-buttons_count_2 {
+    --radio-to-buttons__button_count: 2;
+  }
+  .radio-to-buttons_count_3 {
+    --radio-to-buttons__button_count: 3;
+  }
+  .radio-to-buttons_count_4 {
+    --radio-to-buttons__button_count: 4;
+  }
+  .radio-to-buttons_count_5 {
+    --radio-to-buttons__button_count: 5;
+  }
 
-// Give By Select
-/* prettier-ignore */
-.en__field--give-by-select.en__field--radio input[type=radio]+label{
-	font-family: var(--give-by-select__button_font-family);
+  // Give By Select
+  .en__field--give-by-select.en__field--radio input[type="radio"] + label {
+    font-family: var(--give-by-select__button_font-family);
     color: var(--give-by-select__button_color);
     font-size: var(--give-by-select__button_font-size);
     font-weight: var(--give-by-select__button_font-weight);
-	line-height: var(--give-by-select__button_line-height);
+    line-height: var(--give-by-select__button_line-height);
     background-color: var(--give-by-select__button_background-color);
     border-width: var(--give-by-select__button_border-width);
     border-color: var(--give-by-select__button_border-color);
     border-radius: var(--give-by-select__button_border-radius);
     text-transform: var(--give-by-select__button_text-transform);
-	border-style: solid;
-	// margin-left: 0.5rem;
-	// margin-right: 0.5rem;
+    border-style: solid;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
     padding: var(--give-by-select__button_padding);
-	background-position-x: 40px;
+    background-position-x: 40px;
     // width: 100%;
     text-align: center;
     justify-content: center;
     flex-flow: wrap;
-}
+  }
 
-.en__field--give-by-select > .en__field__element .en__field__item {
-  flex-basis: calc(100% / var(--give-by-select__button_count));
-  flex-grow: var(--give-by-select__flex-grow);
-}
+  .en__field--give-by-select > .en__field__element .en__field__item {
+    flex-basis: calc(100% / var(--give-by-select__button_count));
+    flex-grow: var(--give-by-select__flex-grow);
+  }
 
-.give-by-select_count_1 {
-  --give-by-select__button_count: 1;
-}
-.give-by-select_count_2 {
-  --give-by-select__button_count: 2;
-}
-.give-by-select_count_3 {
-  --give-by-select__button_count: 3;
-}
-.give-by-select_count_4 {
-  --give-by-select__button_count: 4;
-}
-.give-by-select_count_5 {
-  --give-by-select__button_count: 5;
-}
+  .give-by-select_count_1 {
+    --give-by-select__button_count: 1;
+  }
+  .give-by-select_count_2 {
+    --give-by-select__button_count: 2;
+  }
+  .give-by-select_count_3 {
+    --give-by-select__button_count: 3;
+  }
+  .give-by-select_count_4 {
+    --give-by-select__button_count: 4;
+  }
+  .give-by-select_count_5 {
+    --give-by-select__button_count: 5;
+  }
 
-// Donation Amount
-/* prettier-ignore */
-.radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio input[type=radio]+label{
-	font-family: var(--donation-amount__button_font-family);
+  // Donation Amount
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    input[type="radio"]
+    + label {
+    font-family: var(--donation-amount__button_font-family);
     color: var(--donation-amount__button_color);
     font-size: var(--donation-amount__button_font-size);
     font-weight: var(--donation-amount__button_font-weight);
-	line-height: var(--donation-amount__button_line-height);
+    line-height: var(--donation-amount__button_line-height);
     background-color: var(--donation-amount__button_background-color);
     border-width: var(--donation-amount__button_border-width);
     border-color: var(--donation-amount__button_border-color);
     border-radius: var(--donation-amount__button_border-radius);
-	border-style: solid;
-	// margin-left: 0.5rem;
-	// margin-right: 0.5rem;
+    border-style: solid;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
     padding: var(--donation-amount__button_padding);
     text-transform: var(--donation-amount__button_text-transform);
-	background-position-x: 40px;
+    background-position-x: 40px;
     // width: 100%;
     text-align: center;
     justify-content: center;
     flex-flow: wrap;
-}
+  }
 
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio
-  > .en__field__element
-  .en__field__item {
-  flex-basis: calc(100% / var(--donation-amount__button_count));
-  flex-grow: var(--donation-amount__flex-grow);
-}
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    > .en__field__element
+    .en__field__item {
+    flex-basis: calc(100% / var(--donation-amount__button_count));
+    flex-grow: var(--donation-amount__flex-grow);
+  }
 
-.donation-amount_count_1 {
-  --donation-amount__button_count: 1;
-}
-.donation-amount_count_2 {
-  --donation-amount__button_count: 2;
-}
-.donation-amount_count_3 {
-  --donation-amount__button_count: 3;
-}
-.donation-amount_count_4 {
-  --donation-amount__button_count: 4;
-}
-.donation-amount_count_5 {
-  --donation-amount__button_count: 5;
-}
+  .donation-amount_count_1 {
+    --donation-amount__button_count: 1;
+  }
+  .donation-amount_count_2 {
+    --donation-amount__button_count: 2;
+  }
+  .donation-amount_count_3 {
+    --donation-amount__button_count: 3;
+  }
+  .donation-amount_count_4 {
+    --donation-amount__button_count: 4;
+  }
+  .donation-amount_count_5 {
+    --donation-amount__button_count: 5;
+  }
 
-// Recurring Frequency
-/* prettier-ignore */
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio input[type=radio]+label {
-	font-family: var(--recurring-frequency__button_font-family);
+  // Recurring Frequency
+
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    input[type="radio"]
+    + label {
+    font-family: var(--recurring-frequency__button_font-family);
     color: var(--recurring-frequency__button_color);
     font-size: var(--recurring-frequency__button_font-size);
     font-weight: var(--recurring-frequency__button_font-weight);
-	line-height: var(--recurring-frequency__button_line-height);
+    line-height: var(--recurring-frequency__button_line-height);
     background-color: var(--recurring-frequency__button_background-color);
     border-width: var(--recurring-frequency__button_border-width);
     border-color: var(--recurring-frequency__button_border-color);
     border-radius: var(--recurring-frequency__button_border-radius);
-	border-style: solid;
-	// margin-left: 0.5rem;
-	// margin-right: 0.5rem;
+    border-style: solid;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
     padding: var(--recurring-frequency__button_padding);
     text-transform: var(--recurring-frequency__button_text-transform);
-	background-position-x: 40px;
+    background-position-x: 40px;
     // width: 100%;
     text-align: center;
     justify-content: center;
     flex-flow: wrap;
-}
+  }
 
-.radio-to-buttons_recurrfreq
-  .en__field--recurrfreq.en__field--radio
-  > .en__field__element
-  .en__field__item {
-  flex-basis: calc(100% / var(--recurring-frequency__button_count));
-  flex-grow: var(--recurring-frequency__flex-grow);
-}
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    > .en__field__element
+    .en__field__item {
+    flex-basis: calc(100% / var(--recurring-frequency__button_count));
+    flex-grow: var(--recurring-frequency__flex-grow);
+  }
 
-.recurring-frequency_count_1 {
-  --recurring-frequency__button_count: 1;
-}
-.recurring-frequency_count_2 {
-  --recurring-frequency__button_count: 2;
-}
-.recurring-frequency_count_3 {
-  --recurring-frequency__button_count: 3;
-}
-.recurring-frequency_count_4 {
-  --recurring-frequency__button_count: 4;
-}
-.recurring-frequency_count_5 {
-  --recurring-frequency__button_count: 5;
-}
+  .recurring-frequency_count_1 {
+    --recurring-frequency__button_count: 1;
+  }
+  .recurring-frequency_count_2 {
+    --recurring-frequency__button_count: 2;
+  }
+  .recurring-frequency_count_3 {
+    --recurring-frequency__button_count: 3;
+  }
+  .recurring-frequency_count_4 {
+    --recurring-frequency__button_count: 4;
+  }
+  .recurring-frequency_count_5 {
+    --recurring-frequency__button_count: 5;
+  }
 
-// Recurring Payment
-/* prettier-ignore */
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio input[type=radio]+label {
-	font-family: var(--recurring-payment__button_font-family);
+  // Recurring Payment
+
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    input[type="radio"]
+    + label {
+    font-family: var(--recurring-payment__button_font-family);
     color: var(--recurring-payment__button_color);
     font-size: var(--recurring-payment__button_font-size);
     font-weight: var(--recurring-payment__button_font-weight);
-	line-height: var(--recurring-payment__button_line-height);
+    line-height: var(--recurring-payment__button_line-height);
     background-color: var(--recurring-payment__button_background-color);
     border-width: var(--recurring-payment__button_border-width);
     border-color: var(--recurring-payment__button_border-color);
     border-radius: var(--recurring-payment__button_border-radius);
-	border-style: solid;
-	// margin-left: 0.5rem;
-	// margin-right: 0.5rem;
+    border-style: solid;
+    // margin-left: 0.5rem;
+    // margin-right: 0.5rem;
     padding: var(--recurring-payment__button_padding);
     text-transform: var(--recurring-payment__button_text-transform);
-	background-position-x: 40px;
+    background-position-x: 40px;
     // width: 100%;
     text-align: center;
     justify-content: center;
     flex-flow: wrap;
-}
+  }
 
-.radio-to-buttons_recurrpay
-  .en__field--recurrpay.en__field--radio
-  > .en__field__element
-  .en__field__item {
-  flex-basis: calc(100% / var(--recurring-payment__button_count));
-  flex-grow: var(--recurring-payment__flex-grow);
-}
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    > .en__field__element
+    .en__field__item {
+    flex-basis: calc(100% / var(--recurring-payment__button_count));
+    flex-grow: var(--recurring-payment__flex-grow);
+  }
 
-.recurring-payment_count_1 {
-  --recurring-payment__button_count: 1;
-}
-.recurring-payment_count_2 {
-  --recurring-payment__button_count: 2;
-}
-.recurring-payment_count_3 {
-  --recurring-payment__button_count: 3;
-}
-.recurring-payment_count_4 {
-  --recurring-payment__button_count: 4;
-}
-.recurring-payment_count_5 {
-  --recurring-payment__button_count: 5;
-}
+  .recurring-payment_count_1 {
+    --recurring-payment__button_count: 1;
+  }
+  .recurring-payment_count_2 {
+    --recurring-payment__button_count: 2;
+  }
+  .recurring-payment_count_3 {
+    --recurring-payment__button_count: 3;
+  }
+  .recurring-payment_count_4 {
+    --recurring-payment__button_count: 4;
+  }
+  .recurring-payment_count_5 {
+    --recurring-payment__button_count: 5;
+  }
 
-/*
+  /*
 ########################################################################
 # HOVER STATE
 ########################################################################
 */
 
-// Radio to Buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio .en__field__item:hover input[type=radio]+label{
+  // Radio to Buttons
+
+  .radio-to-buttons
+    .en__field--radio
+    .en__field__item:hover
+    input[type="radio"]
+    + label {
     color: var(--button_color_hover);
     background-color: var(--button_background-color_hover);
     border-color: var(--button_border-color_hover);
-}
+  }
 
-// Give By Select
-/* prettier-ignore */
-.en__field--give-by-select.en__field--radio .en__field__item:hover input[type=radio]+label{
+  // Give By Select
+
+  .en__field--give-by-select.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]
+    + label {
     color: var(--give-by-select__button_color_hover);
     background-color: var(--give-by-select__button_background-color_hover);
     border-color: var(--give-by-select__button_border-color_hover);
-}
+  }
 
-// Donation Amount
-/* prettier-ignore */
-.radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__item:hover input[type=radio]+label{
+  // Donation Amount
+
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]
+    + label {
     color: var(--donation-amount__button_color_hover);
     background-color: var(--donation-amount__button_background-color_hover);
     border-color: var(--donation-amount__button_border-color_hover);
-}
+  }
 
-// Recurring Frequency
-/* prettier-ignore */
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio .en__field__item:hover input[type=radio]+label{
+  // Recurring Frequency
+
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]
+    + label {
     color: var(--recurring-frequency__button_color_hover);
     background-color: var(--recurring-frequency__button_background-color_hover);
     border-color: var(--recurring-frequency__button_border-color_hover);
-}
+  }
 
-// Recurring Payment
-/* prettier-ignore */
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio .en__field__item:hover input[type=radio]+label{
+  // Recurring Payment
+
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]
+    + label {
     color: var(--recurring-payment__button_color_hover);
     background-color: var(--recurring-payment__button_background-color_hover);
     border-color: var(--recurring-paymnet__button_border-color_hover);
-}
+  }
 
-/*
+  /*
 ########################################################################
 # SELECTED STATE
 ########################################################################
 */
 
-// Radio to Buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio .en__field__item input[type=radio]:checked+label{
+  // Radio to Buttons
+
+  .radio-to-buttons
+    .en__field--radio
+    .en__field__item
+    input[type="radio"]:checked
+    + label {
     color: var(--button_color_checked);
     background-color: var(--button_background-color_checked);
     border-color: var(--button_border-color_checked);
-}
+  }
 
-// Give By Select
-/* prettier-ignore */
-.en__field--give-by-select.en__field--radio .en__field__item input[type=radio]:checked+label{
+  // Give By Select
+
+  .en__field--give-by-select.en__field--radio
+    .en__field__item
+    input[type="radio"]:checked
+    + label {
     color: var(--give-by-select__button_color_checked);
     background-color: var(--give-by-select__button_background-color_checked);
     border-color: var(--give-by-select__button_border-color_checked);
-}
+  }
 
-// Donation Amount
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio
-  .en__field__item
-  input[type="radio"]:checked
-  + label,
-.radio-to-buttons_donationAmt
-  .en__field--donationAmt.en__field--radio.en__field--withOther--active
-  .en__field__item
-  .en__field__input--other {
-  color: var(--donation-amount__button_color_checked);
-  background-color: var(--donation-amount__button_background-color_checked);
-  border-color: var(--donation-amount__button_border-color_checked);
-}
+  // Donation Amount
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    .en__field__item
+    input[type="radio"]:checked
+    + label,
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio.en__field--withOther--active
+    .en__field__item
+    .en__field__input--other {
+    color: var(--donation-amount__button_color_checked);
+    background-color: var(--donation-amount__button_background-color_checked);
+    border-color: var(--donation-amount__button_border-color_checked);
+  }
 
-// Recurring Frequency
-/* prettier-ignore */
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio .en__field__item input[type=radio]:checked+label {
+  // Recurring Frequency
+
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    .en__field__item
+    input[type="radio"]:checked
+    + label {
     color: var(--recurring-frequency__button_color_checked);
-    background-color: var(--recurring-frequency__button_background-color_checked);
+    background-color: var(
+      --recurring-frequency__button_background-color_checked
+    );
     border-color: var(--recurring-frequency__button_border-color_checked);
-}
+  }
 
-// Recurring Payment
-/* prettier-ignore */
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio .en__field__item input[type=radio]:checked+label {
+  // Recurring Payment
+
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    .en__field__item
+    input[type="radio"]:checked
+    + label {
     color: var(--recurring-payment__button_color_checked);
     background-color: var(--recurring-payment__button_background-color_checked);
     border-color: var(--recurring-payment__button_border-color_checked);
-}
+  }
 
-/*
+  /*
 ########################################################################
 # HOVER AND CHECKED STATE
 ########################################################################
 */
 
-// Radio to Buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio .en__field__item:hover input[type=radio]:checked+label{
+  // Radio to Buttons
+
+  .radio-to-buttons
+    .en__field--radio
+    .en__field__item:hover
+    input[type="radio"]:checked
+    + label {
     color: var(--button_color_checked);
     background-color: var(--button_background-color_checked);
     border-color: var(--button_border-color_checked);
-}
+  }
 
-// Give By Select
-/* prettier-ignore */
-.en__field--give-by-select.en__field--radio .en__field__item:hover input[type=radio]:checked+label{
+  // Give By Select
+
+  .en__field--give-by-select.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]:checked
+    + label {
     color: var(--give-by-select__button_color_checked);
     background-color: var(--give-by-select__button_background-color_checked);
     border-color: var(--give-by-select__button_border-color_checked);
-}
+  }
 
-// Donation Amount
-/* prettier-ignore */
-.radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__item:hover input[type=radio]:checked+label{
+  // Donation Amount
+
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]:checked
+    + label {
     color: var(--donation-amount__button_color_checked);
     background-color: var(--donation-amount__button_background-color_checked);
     border-color: var(--donation-amount__button_border-color_checked);
-}
+  }
 
-// Recurring Frequency
-/* prettier-ignore */
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio .en__field__item:hover input[type=radio]:checked+label{
+  // Recurring Frequency
+
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]:checked
+    + label {
     color: var(--recurring-frequency__button_color_checked);
-    background-color: var(--recurring-frequency__button_background-color_checked);
+    background-color: var(
+      --recurring-frequency__button_background-color_checked
+    );
     border-color: var(--recurring-frequency__button_border-color_checked);
-}
+  }
 
-// Recurring Payment
-/* prettier-ignore */
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio .en__field__item:hover input[type=radio]:checked+label{
+  // Recurring Payment
+
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    .en__field__item:hover
+    input[type="radio"]:checked
+    + label {
     color: var(--recurring-payment__button_color_checked);
     background-color: var(--recurring-payment__button_background-color_checked);
     border-color: var(--recurring-payment__button_border-color_checked);
-}
+  }
 
-/*
+  /*
 ########################################################################
 # FOCUS STATE
 ########################################################################
 */
 
-// Radio to Buttons
-/* prettier-ignore */
-.radio-to-buttons .en__field--radio input[type=radio]:focus+label{
-	// outline: none;
-}
+  // Radio to Buttons
 
-// Give By Select
-/* prettier-ignore */
-.en__field--give-by-select.en__field--radio input[type=radio]:focus+label{
-	// outline: none;
-}
+  .radio-to-buttons .en__field--radio input[type="radio"]:focus + label {
+    // outline: none;
+  }
 
-// Donation Amount
-/* prettier-ignore */
-.radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio input[type=radio]:focus+label{
-	// outline: none;
-}
+  // Give By Select
 
-// Recurring Frequency
-/* prettier-ignore */
-.radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio input[type=radio]:focus+label{
-	// outline: none;
-}
+  .en__field--give-by-select.en__field--radio
+    input[type="radio"]:focus
+    + label {
+    // outline: none;
+  }
 
-// Recurring Payment
-/* prettier-ignore */
-.radio-to-buttons_recurrpay .en__field--recurrpay.en__field--radio input[type=radio]:focus+label{
-	// outline: none;
-}
+  // Donation Amount
 
-/*
+  .radio-to-buttons_donationAmt
+    .en__field--donationAmt.en__field--radio
+    input[type="radio"]:focus
+    + label {
+    // outline: none;
+  }
+
+  // Recurring Frequency
+
+  .radio-to-buttons_recurrfreq
+    .en__field--recurrfreq.en__field--radio
+    input[type="radio"]:focus
+    + label {
+    // outline: none;
+  }
+
+  // Recurring Payment
+
+  .radio-to-buttons_recurrpay
+    .en__field--recurrpay.en__field--radio
+    input[type="radio"]:focus
+    + label {
+    // outline: none;
+  }
+
+  /*
 ########################################################################
 # RECURRING GIFTS 
 ########################################################################
 */
 
-// If the gift has a recurring frequency, prepare to append a label on the giving amounts
-/* prettier-ignore */
-[data-engrid-transaction-recurring-frequency] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after{
+  // If the gift has a recurring frequency, prepare to append a label on the giving amounts
+
+  &[data-engrid-transaction-recurring-frequency]
+    .radio-to-buttons_donationAmt
+    .en__field--donationAmt
+    div:not(.en__field__item--other)
+    .en__field__label--item::after {
     margin-left: calc(1ch / 4);
     font-size: 75%;
     opacity: 0.5;
-}
+  }
 
-// Append "/mo" to giving amount labels
-/* prettier-ignore */
-[data-engrid-transaction-recurring-frequency="monthly"] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after{
-  content: var(--give-monthly-donation-amount-appended-label);
-}
+  // Append "/mo" to giving amount labels
 
-// Append "/yr" to giving amount labels
-/* prettier-ignore */
-[data-engrid-transaction-recurring-frequency="annual"] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after {
+  &[data-engrid-transaction-recurring-frequency="monthly"]
+    .radio-to-buttons_donationAmt
+    .en__field--donationAmt
+    div:not(.en__field__item--other)
+    .en__field__label--item::after {
+    content: var(--give-monthly-donation-amount-appended-label);
+  }
+
+  // Append "/yr" to giving amount labels
+  /* prettier-ignore */
+  [data-engrid-transaction-recurring-frequency="annual"] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after {
 	content: var(--give-annual-donation-amount-appended-label);
 }
 
-// Append "/yr" to giving amount labels
-/* prettier-ignore */
-[data-engrid-transaction-recurring-frequency="quarterly"] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after {
+  // Append "/yr" to giving amount labels
+  /* prettier-ignore */
+  [data-engrid-transaction-recurring-frequency="quarterly"] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item::after {
 	content: var(--give-quarterly-donation-amount-appended-label);
 }
 
-/*
+  /*
 ########################################################################
 # HIDE / SHOW CLASSES BASED ON GIFT RECURRANCE AND FREQEUNCY 
 ########################################################################
 */
 
-// Helper classes to hide/show content based on if a the gift is one-time or recurring and the gift's frequency
-/* prettier-ignore */
-body:not(#en__pagebuilder):not([data-engrid-debug]){
+  // Helper classes to hide/show content based on if a the gift is one-time or recurring and the gift's frequency
+  /* prettier-ignore */
+  body:not(#en__pagebuilder):not([data-engrid-debug]){
 	&[data-engrid-transaction-recurring="n"] .recurring-frequency-n-hide,
 	&[data-engrid-transaction-recurring="n"] .recurring-frequency-onetime-hide, // Doesn't need data-engrid-transaction-recurring-frequency="onetime" defined to know the gift will be processed as one-time
 	&:not([data-engrid-transaction-recurring="n"]) .recurring-frequency-n-show,
@@ -709,27 +781,28 @@ body:not(#en__pagebuilder):not([data-engrid-debug]){
 	&:not([data-engrid-transaction-recurring="y"][data-engrid-transaction-recurring-frequency="monthly"]) .recurring-frequency-monthly-show,
 	&:not([data-engrid-transaction-recurring="y"][data-engrid-transaction-recurring-frequency="quarterly"]) .recurring-frequency-quarterly-show,
 	&:not([data-engrid-transaction-recurring="y"][data-engrid-transaction-recurring-frequency="semi_annual"]) .recurring-frequency-semi-annual-show,
-	&:not([data-engrid-transaction-recurring="y"][data-engrid-transaction-recurring-frequency="annual"]) .recurring-frequency-annual-show{
-		display: none;
-	}
+	&:not([data-engrid-transaction-recurring="y"][data-engrid-transaction-recurring-frequency="annual"]) .recurring-frequency-annual-show {
+    display: none;
+  }
 }
 
-#en__pagebuilder,
-[data-engrid-debug] {
-  .recurring-frequency-annual-hide,
-  .recurring-frequency-annual-show,
-  .recurring-frequency-monthly-hide,
-  .recurring-frequency-monthly-show,
-  .recurring-frequency-n-hide,
-  .recurring-frequency-n-show,
-  .recurring-frequency-onetime-hide,
-  .recurring-frequency-onetime-show,
-  .recurring-frequency-quarterly-hide,
-  .recurring-frequency-quarterly-show,
-  .recurring-frequency-semi-annual-hide,
-  .recurring-frequency-semi-annual-show,
-  .recurring-frequency-y-hide,
-  .recurring-frequency-y-show {
-    background-color: #0000ff1a !important;
+  #en__pagebuilder,
+  [data-engrid-debug] {
+    .recurring-frequency-annual-hide,
+    .recurring-frequency-annual-show,
+    .recurring-frequency-monthly-hide,
+    .recurring-frequency-monthly-show,
+    .recurring-frequency-n-hide,
+    .recurring-frequency-n-show,
+    .recurring-frequency-onetime-hide,
+    .recurring-frequency-onetime-show,
+    .recurring-frequency-quarterly-hide,
+    .recurring-frequency-quarterly-show,
+    .recurring-frequency-semi-annual-hide,
+    .recurring-frequency-semi-annual-show,
+    .recurring-frequency-y-hide,
+    .recurring-frequency-y-show {
+      background-color: #0000ff1a !important;
+    }
   }
 }
