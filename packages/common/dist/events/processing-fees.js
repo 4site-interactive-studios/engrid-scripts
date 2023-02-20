@@ -8,7 +8,6 @@ export class ProcessingFees {
         this._form = EnForm.getInstance();
         this._fee = 0;
         this._field = null;
-        // console.log('%c Processing Fees Constructor', 'font-size: 30px; background-color: #000; color: #FF0');
         // Run only if it is a Donation Page with a Donation Amount field
         if (!document.getElementsByName("transaction.donationAmt").length) {
             return;
@@ -18,7 +17,6 @@ export class ProcessingFees {
             : document.querySelector('input[name="supporter.processing_fees"]');
         // Watch the Radios for Changes
         if (this._field instanceof HTMLInputElement) {
-            // console.log('%c Processing Fees Start', 'font-size: 30px; background-color: #000; color: #FF0');
             this._field.addEventListener("change", (e) => {
                 if (this._field instanceof HTMLInputElement &&
                     this._field.checked &&
@@ -26,7 +24,6 @@ export class ProcessingFees {
                     this._subscribe = this._form.onSubmit.subscribe(() => this.addFees());
                 }
                 this._onFeeChange.dispatch(this.fee);
-                // // console.log('%c Processing Fees Script Applied', 'font-size: 30px; background-color: #000; color: #FF0');
             });
         }
         // this._amount = amount;

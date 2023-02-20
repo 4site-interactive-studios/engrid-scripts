@@ -5,19 +5,14 @@ import { EnForm } from "./events";
 
 export class ExpandRegionName {
   private _form: EnForm = EnForm.getInstance();
-  private logger: EngridLogger = new EngridLogger(
-    "ExpandRegionName",
-    "#333333",
-    "#00eb65",
-    "🌍"
-  );
+  private logger: EngridLogger = new EngridLogger("Expand Region Name");
 
   constructor() {
     if (this.shouldRun()) {
       const expandedRegionField = ENGrid.getOption(
         "RegionLongFormat"
       ) as string;
-      console.log("expandedRegionField", expandedRegionField);
+      this.logger.log("expandedRegionField", expandedRegionField);
       const hiddenRegion = document.querySelector(
         `[name="${expandedRegionField}"]`
       );

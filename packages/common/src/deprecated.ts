@@ -1,9 +1,11 @@
 // A way to gracefully handle deprecation.
 // Find and replace HTML Elements, Classes, and more after the DOM is loaded but before any other Javascript fires.
 
-import { ENGrid } from "./";
+import { EngridLogger } from "./";
 
 export class Deprecated {
+  private logger: EngridLogger = new EngridLogger("Deprecated");
+
   constructor() {
     let deprecated;
     let replacement;
@@ -32,21 +34,19 @@ export class Deprecated {
   }
 
   private warning(deprecated: any) {
-    if (ENGrid.debug)
-      console.log(
-        "Deprecated: '" + deprecated + "' was detected and nothing was done."
-      );
+    this.logger.log(
+      "Deprecated: '" + deprecated + "' was detected and nothing was done."
+    );
   }
 
   private replace(deprecated: any, replacement: any) {
-    if (ENGrid.debug)
-      console.log(
-        "Deprecated: '" +
-          deprecated +
-          "' was detected and replaced with '" +
-          replacement +
-          "'."
-      );
+    this.logger.log(
+      "Deprecated: '" +
+        deprecated +
+        "' was detected and replaced with '" +
+        replacement +
+        "'."
+    );
     deprecated.classList.add(replacement);
     deprecated.classList.remove(deprecated);
   }

@@ -1,5 +1,5 @@
 export declare class Autocomplete {
-    private debug;
+    private logger;
     constructor();
     private autoCompleteField;
 }

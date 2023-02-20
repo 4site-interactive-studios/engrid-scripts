@@ -1,10 +1,11 @@
-import { ENGrid } from "./";
+import { ENGrid, EngridLogger } from "./";
 import { DonationFrequency } from "./events";
 export class setRecurrFreq {
     constructor() {
         this._frequency = DonationFrequency.getInstance();
         this.linkClass = "setRecurrFreq-";
         this.checkboxName = "engrid.recurrfreq";
+        this.logger = new EngridLogger("Set Recurring Frequency");
         // Watch the links that starts with linkClass
         document
             .querySelectorAll(`a[class^="${this.linkClass}"]`)
@@ -14,8 +15,7 @@ export class setRecurrFreq {
                 const setRecurrFreqClass = element.className
                     .split(" ")
                     .filter((linkClass) => linkClass.startsWith(this.linkClass));
-                if (ENGrid.debug)
-                    console.log(setRecurrFreqClass);
+                this.logger.log(setRecurrFreqClass);
                 if (setRecurrFreqClass.length) {
                     e.preventDefault();
                     ENGrid.setFieldValue("transaction.recurrfreq", setRecurrFreqClass[0]

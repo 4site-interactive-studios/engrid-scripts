@@ -8,6 +8,7 @@ export declare class LiveVariables {
     private multiplier;
     private submitLabel;
     private options;
+    private logger;
     constructor(options: Options);
     private getAmountTxt;
     private getUpsellAmountTxt;

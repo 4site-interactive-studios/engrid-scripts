@@ -15,21 +15,22 @@
   <figure class="media-with-attribution"><img src="https://via.placeholder.com/300x300" data-src="https://via.placeholder.com/300x300" data-attribution-source="Jane Doe 1"><figattribution class="attribution-bottomright">Jane Doe 1</figattribution></figure>
 */
 
-import { ENGrid } from "./";
+import { EngridLogger } from "./";
 const tippy = require("tippy.js").default;
 
 export class MediaAttribution {
+  private logger: EngridLogger = new EngridLogger("Media Attribution");
+
   // Find all images with attribution but not with the "data-attribution-hide-overlay" attribute
   mediaWithAttribution = document.querySelectorAll(
     "img[data-attribution-source]:not([data-attribution-hide-overlay]), video[data-attribution-source]:not([data-attribution-hide-overlay])"
   );
   constructor() {
     this.mediaWithAttribution.forEach((element) => {
-      if (ENGrid.debug)
-        console.log(
-          "The following image was found with data attribution fields on it. It's markup will be changed to add caption support.",
-          element
-        );
+      this.logger.log(
+        "The following image was found with data attribution fields on it. It's markup will be changed to add caption support.",
+        element
+      );
 
       // Creates the wapping <figure> element
       let figure = document.createElement("figure");

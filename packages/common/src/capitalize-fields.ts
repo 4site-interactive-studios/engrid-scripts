@@ -1,8 +1,9 @@
-import { ENGrid } from "./";
+import { EngridLogger } from "./";
 import { EnForm } from "./events";
 
 export class CapitalizeFields {
   public _form: EnForm = EnForm.getInstance();
+  private logger: EngridLogger = new EngridLogger("Capitalize Fields");
 
   constructor() {
     this._form.onSubmit.subscribe(() =>
@@ -27,7 +28,7 @@ export class CapitalizeFields {
       field.value = field.value.replace(/\w\S*/g, (w) =>
         w.replace(/^\w/, (c) => c.toUpperCase())
       );
-      if (ENGrid.debug) console.log("Capitalized", field.value);
+      this.logger.log("Capitalized", field.value);
     }
     return true;
   }

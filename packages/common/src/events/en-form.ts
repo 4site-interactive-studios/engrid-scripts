@@ -1,5 +1,5 @@
 import { SignalDispatcher } from "strongly-typed-events";
-import { ENGrid, EngridLogger } from "../";
+import { EngridLogger } from "../";
 
 export class EnForm {
   private logger: EngridLogger = new EngridLogger("EnForm");
@@ -52,17 +52,17 @@ export class EnForm {
   }
 
   public get onSubmit() {
-    // if(ENGrid.debug) console.log("onSubmit");
+    this.logger.log("onSubmit");
     return this._onSubmit.asEvent();
   }
 
   public get onError() {
-    // if(ENGrid.debug) console.log("onError");
+    this.logger.log("onError");
     return this._onError.asEvent();
   }
 
   public get onValidate() {
-    // if(ENGrid.debug) console.log("onError");
+    this.logger.log("onValidate");
     return this._onValidate.asEvent();
   }
 }

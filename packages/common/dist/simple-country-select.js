@@ -19,7 +19,6 @@ export class SimpleCountrySelect {
                 const jsondata = JSON.parse(data);
                 this.country = jsondata.loc;
                 this.init();
-                // console.log("Country:", this.country);
             });
         }
         else {

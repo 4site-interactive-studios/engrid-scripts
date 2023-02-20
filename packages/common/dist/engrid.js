@@ -116,8 +116,6 @@ export class ENGrid {
                         });
                         if (customDependencies.length > 0) {
                             window.EngagingNetworks.require._defined.enDependencies.dependencies.parseDependencies(customDependencies);
-                            if (ENGrid.getOption("Debug"))
-                                console.log("EN Dependencies Triggered", customDependencies);
                         }
                     }
                 }

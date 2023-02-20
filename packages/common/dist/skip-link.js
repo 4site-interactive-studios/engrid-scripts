@@ -2,9 +2,10 @@
 // the first <title> or <h1> field in a "body-" section, or the first <h1> if none are found
 // in those sections
 // Depends on _engrid-skip-link.scss
-import { ENGrid } from "./";
+import { EngridLogger } from "./";
 export class SkipToMainContentLink {
     constructor() {
+        this.logger = new EngridLogger("Skip to Main Content Link");
         const firstTitleInEngridBody = document.querySelector("div[class*='body-'] title");
         const firstH1InEngridBody = document.querySelector("div[class*='body-'] h1");
         const firstTitle = document.querySelector("title");
@@ -26,8 +27,7 @@ export class SkipToMainContentLink {
             this.insertSkipLinkSpan();
         }
         else {
-            if (ENGrid.debug)
-                console.log("This page contains no <title> or <h1> and a 'Skip to main content' link was not added");
+            this.logger.log("This page contains no <title> or <h1> and a 'Skip to main content' link was not added");
         }
     }
     insertSkipLinkSpan() {

@@ -146,7 +146,6 @@ export const debugBar = () => {
       const buttonsWrapper = document.getElementById("buttons-wrapper");
 
       if (infoWrapper) {
-        // console.log(window.performance);
         const now = new Date().getTime();
         const initialPageLoad =
           (now - performance.timing.navigationStart) / 1000;
@@ -960,17 +959,12 @@ export const contactDetailLabels = () => {
   // @TODO Needs refactoring. Has to be a better way to do this.
   const recipientChange = (e: Event) => {
     let recipientRow = e.target as HTMLDivElement;
-    // console.log("recipientChange: recipientRow: ", recipientRow);
     let recipientRowWrapper = recipientRow.parentNode as HTMLDivElement;
-    // console.log("recipientChange: recipientRowWrapper: ", recipientRowWrapper);
     let recipientRowsWrapper = recipientRowWrapper.parentNode as HTMLDivElement;
-    // console.log("recipientChange: recipientRowsWrapper: ", recipientRowsWrapper);
     let contactDetails = recipientRowsWrapper.parentNode as HTMLDivElement;
-    // console.log("recipientChange: contactDetails: ", contactDetails);
     let contactDetailsCheckbox = contactDetails.querySelector(
       "input"
     ) as HTMLInputElement;
-    // console.log("recipientChange: contactDetailsCheckbox: ", contactDetailsCheckbox);
     if (contactDetailsCheckbox.checked) {
       contactDetailsCheckbox.checked = false;
     } else {
@@ -1012,21 +1006,14 @@ export const easyEdit = () => {
 // newsletter checkbox(s) before submitting.
 
 export const simpleUnsubscribe = () => {
-  // console.log("simpleUnsubscribe fired");
-
   // Check if we're on an Unsubscribe / Manage Subscriptions page
   if (window.location.href.indexOf("/subscriptions") != -1) {
-    // console.log("On an subscription management page");
-
     // Check if any form elements on this page have the "forceUncheck" class
     const forceUncheck = document.querySelectorAll(".forceUncheck");
     if (forceUncheck) {
-      // console.log("Found forceUnchecl dom elements", forceUncheck);
-
       // Step through each DOM element with forceUncheck looking for checkboxes
       Array.from(forceUncheck).forEach((e) => {
         let element = e as HTMLElement;
-        // console.log("Checking this formComponent for checkboxes", element);
 
         // In the forceUncheck form component, find any checboxes
         let uncheckCheckbox = element.querySelectorAll(
@@ -1036,7 +1023,7 @@ export const simpleUnsubscribe = () => {
           // Step through each Checkbox in the forceUncheck form component
           Array.from(uncheckCheckbox).forEach((f) => {
             let checkbox = f as HTMLInputElement;
-            // console.log("Unchecking this checkbox", checkbox);
+
             // Uncheck the checbox
             checkbox.checked = false;
           });
@@ -1074,7 +1061,6 @@ const contentFooter = document.querySelector(".content-footer");
 
 const isInViewport = (e: any) => {
   const distance = e.getBoundingClientRect();
-  // console.log("Footer: ", distance);
   return (
     distance.top >= 0 &&
     distance.left >= 0 &&

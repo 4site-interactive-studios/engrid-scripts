@@ -3,9 +3,11 @@
 // in those sections
 // Depends on _engrid-skip-link.scss
 
-import { ENGrid } from "./";
+import { EngridLogger } from "./";
 
 export class SkipToMainContentLink {
+  private logger: EngridLogger = new EngridLogger("Skip to Main Content Link");
+
   constructor() {
     const firstTitleInEngridBody = document.querySelector(
       "div[class*='body-'] title"
@@ -41,10 +43,9 @@ export class SkipToMainContentLink {
       );
       this.insertSkipLinkSpan();
     } else {
-      if (ENGrid.debug)
-        console.log(
-          "This page contains no <title> or <h1> and a 'Skip to main content' link was not added"
-        );
+      this.logger.log(
+        "This page contains no <title> or <h1> and a 'Skip to main content' link was not added"
+      );
     }
   }
 

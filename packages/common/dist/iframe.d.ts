@@ -8,6 +8,7 @@ export declare class iFrame {
     private getIFrameByEvent;
     private shouldScroll;
     private inIframe;
+    private hasForceFullView;
     private isChained;
     private hasPayment;
     private hideFormComponents;

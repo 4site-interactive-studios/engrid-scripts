@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { EnForm, DonationAmount, ENGrid, ProcessingFees } from "./";
+import { EnForm, DonationAmount, EngridLogger, ProcessingFees } from "./";
 /*global window */
 const ApplePaySession = window.ApplePaySession;
 const merchantIdentifier = window.merchantIdentifier;
@@ -28,6 +28,7 @@ export class ApplePay {
         this._amount = DonationAmount.getInstance();
         this._fees = ProcessingFees.getInstance();
         this._form = EnForm.getInstance();
+        this.logger = new EngridLogger("Apple Pay");
         this.checkApplePay();
     }
     checkApplePay() {
@@ -37,8 +38,7 @@ export class ApplePay {
                 const applePayContainer = document.querySelector(".en__field__item.applepay");
                 if (applePayContainer)
                     applePayContainer.remove();
-                if (ENGrid.debug)
-                    console.log("Apple Pay DISABLED");
+                this.logger.log("Apple Pay DISABLED");
                 return false;
             }
             const promise = ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
@@ -54,8 +54,7 @@ export class ApplePay {
                     this._form.onSubmit.subscribe(() => this.onPayClicked());
                 }
             });
-            if (ENGrid.debug)
-                console.log("applePayEnabled", applePayEnabled);
+            this.logger.log("applePayEnabled", applePayEnabled);
             let applePayWrapper = this.applePay.closest(".en__field__item");
             if (applePayEnabled) {
                 // Set Apple Pay Class
@@ -70,6 +69,7 @@ export class ApplePay {
         });
     }
     performValidation(url) {
+        const logger = this.logger;
         return new Promise(function (resolve, reject) {
             var merchantSession = {};
             merchantSession.merchantIdentifier = merchantIdentifier;
@@ -88,8 +88,7 @@ export class ApplePay {
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 var data = JSON.parse(this.responseText);
-                if (ENGrid.debug)
-                    console.log("Apple Pay Validation", data);
+                logger.log("Apple Pay Validation", data);
                 resolve(data);
             };
             xhr.onerror = reject;
@@ -108,6 +107,7 @@ export class ApplePay {
         });
     }
     onPayClicked() {
+        const logger = this.logger;
         const enFieldPaymentType = document.querySelector("#en__field_transaction_paymenttype");
         const applePayToken = document.getElementById("applePayToken");
         const formClass = this._form;
@@ -131,8 +131,7 @@ export class ApplePay {
                     thisClass
                         .performValidation(event.validationURL)
                         .then(function (merchantSession) {
-                        if (ENGrid.debug)
-                            console.log("Apple Pay merchantSession", merchantSession);
+                        logger.log("Apple Pay merchantSession", merchantSession);
                         session.completeMerchantValidation(merchantSession);
                     });
                 };
@@ -140,15 +139,13 @@ export class ApplePay {
                     thisClass
                         .sendPaymentToken(event.payment.token)
                         .then(function (success) {
-                        if (ENGrid.debug)
-                            console.log("Apple Pay Token", event.payment.token);
+                        logger.log("Apple Pay Token", event.payment.token);
                         document.getElementById("applePayToken").value = JSON.stringify(event.payment.token);
                         formClass.submitForm();
                     });
                 };
                 session.oncancel = function (event) {
-                    if (ENGrid.debug)
-                        console.log("Cancelled", event);
+                    this.logger.log("Cancelled", event);
                     alert("You cancelled. Sorry it didn't work out.");
                     formClass.dispatchError();
                 };

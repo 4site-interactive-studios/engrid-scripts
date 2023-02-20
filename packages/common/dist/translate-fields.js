@@ -24,7 +24,6 @@ export class TranslateFields {
         this.resetTranslatedFields();
         if (this.countrySelect.value in this.options) {
             this.options[this.countrySelect.value].forEach((field) => {
-                // console.log(field);
                 this.translateField(field.field, field.translation);
             });
         }

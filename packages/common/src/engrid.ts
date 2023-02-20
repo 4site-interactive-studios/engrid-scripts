@@ -146,8 +146,6 @@ export abstract class ENGrid {
               window.EngagingNetworks.require._defined.enDependencies.dependencies.parseDependencies(
                 customDependencies
               );
-              if (ENGrid.getOption("Debug"))
-                console.log("EN Dependencies Triggered", customDependencies);
             }
           }
         }

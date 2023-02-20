@@ -4,6 +4,7 @@ export declare class ApplePay {
     _amount: DonationAmount;
     _fees: ProcessingFees;
     _form: EnForm;
+    private logger;
     constructor();
     private checkApplePay;
     performValidation(url: string): Promise<unknown>;

@@ -41,15 +41,15 @@ export class EnForm {
         }
     }
     get onSubmit() {
-        // if(ENGrid.debug) console.log("onSubmit");
+        this.logger.log("onSubmit");
         return this._onSubmit.asEvent();
     }
     get onError() {
-        // if(ENGrid.debug) console.log("onError");
+        this.logger.log("onError");
         return this._onError.asEvent();
     }
     get onValidate() {
-        // if(ENGrid.debug) console.log("onError");
+        this.logger.log("onValidate");
         return this._onValidate.asEvent();
     }
 }

@@ -4,7 +4,7 @@ import {
   DonationFrequency,
   ProcessingFees,
 } from "./events";
-import { ENGrid, Options, OptionsDefaults } from "./";
+import { ENGrid, EngridLogger, Options, OptionsDefaults } from "./";
 export class LiveVariables {
   public _amount: DonationAmount = DonationAmount.getInstance();
   public _fees: ProcessingFees = ProcessingFees.getInstance();
@@ -13,6 +13,8 @@ export class LiveVariables {
   private multiplier: number = 1 / 12;
   private submitLabel;
   private options: Options;
+
+  private logger: EngridLogger = new EngridLogger("Live Variables");
 
   constructor(options: Options) {
     this.options = { ...OptionsDefaults, ...options };
@@ -170,7 +172,9 @@ export class LiveVariables {
     if (recurrpay && recurrpay.type != "radio") {
       recurrpay.value = this._frequency.frequency == "onetime" ? "N" : "Y";
       this._frequency.recurring = recurrpay.value;
-      if (ENGrid.getOption("Debug")) console.log("Recurpay Changed!");
+      this.logger.log(
+        "The Recurring Payment field [name='transaction.recurrpay'] has changed"
+      );
       // Trigger the onChange event for the field
       const event = new Event("change", { bubbles: true });
       recurrpay.dispatchEvent(event);
@@ -204,11 +208,10 @@ export class LiveVariables {
         }
       );
       this._amount.load();
-      if (ENGrid.getOption("Debug"))
-        console.log(
-          "Amounts Swapped To",
-          window.EngridAmounts[this._frequency.frequency]
-        );
+      this.logger.log(
+        "Amounts Swapped To",
+        window.EngridAmounts[this._frequency.frequency]
+      );
     }
   }
 

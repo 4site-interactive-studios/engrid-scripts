@@ -214,29 +214,31 @@ export class App extends ENGrid {
     }
     onLoad() {
         if (this.options.onLoad) {
+            this.logger.log("onLoad Triggered");
             this.options.onLoad();
         }
     }
     onResize() {
         if (this.options.onResize) {
+            this.logger.log("onResize Triggered");
             this.options.onResize();
         }
     }
     onValidate() {
         if (this.options.onValidate) {
-            this.logger.log("Client onValidate Triggered");
+            this.logger.log("onValidate Triggered");
             this.options.onValidate();
         }
     }
     onSubmit() {
         if (this.options.onSubmit) {
-            this.logger.log("Client onSubmit Triggered");
+            this.logger.log("onSubmit Triggered");
             this.options.onSubmit();
         }
     }
     onError() {
         if (this.options.onError) {
-            this.logger.danger("Client onError Triggered");
+            this.logger.danger("onError Triggered");
             this.options.onError();
         }
     }
