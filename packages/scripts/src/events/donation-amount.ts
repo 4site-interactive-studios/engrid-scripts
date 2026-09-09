@@ -39,16 +39,18 @@ export class DonationAmount {
     this.load();
   }
 
-  // The "other" radio is the one whose value isn't a numeric amount
-  // (EN renders it as value="other"), so it cleans to 0
+  // EN may render the "other" radio with a non-numeric or non-positive value
   public isOtherAmountSelected(): boolean {
     const selectedAmount = document.querySelector(
       `input[name="${this._radios}"]:checked`
     ) as HTMLInputElement;
-    return (
-      selectedAmount !== null &&
-      ENGrid.cleanAmount(selectedAmount.value) === 0
-    );
+
+    if (!selectedAmount) {
+      return false;
+    }
+
+    const amount = Number(selectedAmount.value);
+    return !Number.isFinite(amount) || amount <= 0;
   }
 
   private syncOtherAmount(
